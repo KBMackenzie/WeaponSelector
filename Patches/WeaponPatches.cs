@@ -58,10 +58,6 @@ namespace WeaponSelector
             // Library!
             Library library = new Library();
 
-            FileLog.Log("Curse: " + library.CurseNames[Curse].ToString());
-
-            __instance.AddCurse(library.Curses[Curse]);
-
             __result = library.Curses[Curse];
         }
     }
