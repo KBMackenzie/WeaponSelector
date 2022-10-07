@@ -16,6 +16,11 @@ namespace WeaponSelector
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            ArrowClick();
+        }
+
+        public void ArrowClick()
+        {
             var data = SaveFile.SaveData;
 
             switch (type)

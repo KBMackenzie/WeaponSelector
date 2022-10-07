@@ -235,6 +235,27 @@ namespace WeaponSelector
                     break;
             }
         }
+
+
+
+        // Update() holds key presses and all that jazz. c:
+        void Update()
+        {
+            if (Input.GetKeyDown("j"))
+            {
+                Arrows[Change.Weapon].Item2.ArrowClick();
+            }
+
+            if (Input.GetKeyDown("k"))
+            {
+                Arrows[Change.Trait].Item2.ArrowClick();
+            }
+
+            if (Input.GetKeyDown("l"))
+            {
+                Arrows[Change.Curse].Item2.ArrowClick();
+            }
+        }
     }
     
 }
