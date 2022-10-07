@@ -30,7 +30,7 @@ namespace WeaponSelector
 
             if (Weapon != WeaponChoices.Random) // Not random weapon
             {
-                if(Trait != WeaponTraits.Random) // Chosen trait
+                if (Trait != WeaponTraits.Random) // Chosen trait
                 {
                     __result = library.Weapons[Weapon][(int)Trait];
                 }
@@ -41,7 +41,7 @@ namespace WeaponSelector
                     __result = library.Weapons[Weapon][random];
                 }
             }
-            else if(Trait != WeaponTraits.Random) // Random weapon, chosen trait
+            else if (Trait != WeaponTraits.Random) // Random weapon, chosen trait
             {
                 // The "-1" is so WeaponChoices.Random isn't rolled
                 int random = UnityEngine.Random.Range(0, Weapon.EnumLength() - 1);
@@ -57,6 +57,10 @@ namespace WeaponSelector
 
             // Library!
             Library library = new Library();
+
+            FileLog.Log("Curse: " + library.CurseNames[Curse].ToString());
+
+            __instance.AddCurse(library.Curses[Curse]);
 
             __result = library.Curses[Curse];
         }
