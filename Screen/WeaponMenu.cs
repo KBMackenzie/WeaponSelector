@@ -123,15 +123,15 @@ namespace WeaponSelector
             // DECIDE THINGS.
             Dictionary<Change, float> GetY = new Dictionary<Change, float>()
             {
-                { Change.Weapon,   189f  },
-                { Change.Trait,    20f },
+                { Change.Weapon,   189f },
+                { Change.Trait,    20f  },
                 { Change.Curse,   -314f }
             };
 
             float y = GetY[type];
 
             GameObject textBox = new GameObject();
-            textBox.name = "UIText_" + type.ToString();
+            textBox.name = $"UIText_{type}";
             textBox.layer = Layer;
             textBox.transform.SetParent(parent);
 
@@ -157,15 +157,15 @@ namespace WeaponSelector
             Dictionary<Change, float> GetY = new Dictionary<Change, float>()
             {
                 { Change.Weapon,  193f  },
-                { Change.Trait,   30f },
-                { Change.Curse,   -304f }
+                { Change.Trait,   30f   },
+                { Change.Curse,  -304f  }
             };
 
             float y = GetY[type];
 
             // Left arrow
             GameObject leftArrow = new GameObject();
-            leftArrow.name = "LeftArrow_" + type.ToString();
+            leftArrow.name = $"LeftArrow_{type}";
             leftArrow.layer = Layer;
             leftArrow.transform.SetParent(parent);
             leftArrow.transform.localPosition = new Vector3(-360f, y, 0);
@@ -185,7 +185,7 @@ namespace WeaponSelector
 
             // Right arrow
             GameObject rightArrow = new GameObject();
-            rightArrow.name = "RightArrow_" + type.ToString();
+            rightArrow.name = $"RightArrow_{type}";
             rightArrow.layer = Layer;
             rightArrow.transform.SetParent(parent);
             rightArrow.transform.localPosition = new Vector3(360, y, 0);
