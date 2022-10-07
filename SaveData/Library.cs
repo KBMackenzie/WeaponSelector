@@ -24,12 +24,12 @@ namespace WeaponSelector
         Dictionary<WeaponTraits, string> traitNames = new Dictionary<WeaponTraits, string>()
         {
             { WeaponTraits.Normal,      "Normal"        },
-            { WeaponTraits.Poison,      "Poison"        },
-            { WeaponTraits.Critical,    "Critical"      },
-            { WeaponTraits.Healing,     "Healing"       },
-            { WeaponTraits.Fervour,     "Fervour"       },
+            { WeaponTraits.Poison,      "Bane"          },
+            { WeaponTraits.Critical,    "Merciless"     },
+            { WeaponTraits.Healing,     "Vampiric"      },
+            { WeaponTraits.Fervour,     "Zealous"       },
             { WeaponTraits.Godly,       "Godly"         },
-            { WeaponTraits.Necromancy,  "Necromancy"    },
+            { WeaponTraits.Necromancy,  "Necromantic"   },
             { WeaponTraits.Random,      "Random"        },
         };
 
