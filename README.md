@@ -20,7 +20,7 @@ This mod’s only dependency is BepInEx.
 1. Download and install BepInEx.
     1. If you're downloading it from [its Github page](https://github.com/BepInEx/BepInEx/releases), follow [this installation guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex).
     2. If you're downloading ["BepInExPack CultOfTheLamb" from Thunderstore](https://cult-of-the-lamb.thunderstore.io/package/BepInEx/BepInExPack_CultOfTheLamb/), follow the manual installation guide on the Thunderstore page itself. This one comes with a preconfigured `BepInEx.cfg` file, so it's advised you download this one.
-2. Find the `BepInEx > plugins` folder.
+2. Find the `BepInEx/plugins` folder.
 3. Place the contents of **"WeaponSelector.zip"** in a new folder within the plugins folder.
 
 ## How To Use
