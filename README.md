@@ -27,9 +27,9 @@ This mod’s only dependency is BepInEx.
 All you have to do is choose a **Weapon**, **Weapon Trait** and/or **Curse** from the menu and start a dungeon. Your choice of weapon and curse should be given to you at the start of the dungeon and in any weapon-selection rooms.
 
 The menu's fields are:
-1. Top: **"Weapon"** (e.g. Sword, Axe, Dagger).
-2. Middle: **"Weapon Trait"** (e.g. Bane, Zealous, Godly).
-3. Bottom: **"Curse"** (e.g. Divine Guardian, Flaming Shot).
+1. Top: "Weapon" (e.g. Sword, Axe, Dagger).
+2. Middle: "Weapon Trait" (e.g. Bane, Zealous, Godly).
+3. Bottom: "Curse" (e.g. Divine Guardian, Flaming Shot).
 
 You can also choose to let the mod randomize your weapon pool a bit!
 A simple explanation:
