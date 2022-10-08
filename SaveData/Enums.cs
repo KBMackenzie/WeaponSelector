@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WeaponSelector
 {
@@ -11,24 +9,24 @@ namespace WeaponSelector
         Axe,
         Hammer,
         Dagger,
-		Gauntlet,
+        Gauntlet,
         Random,
     }
 
-	internal enum WeaponTraits
-	{
-		Normal,
-		Poison,
-		Critical,
-		Healing,
-		Fervour,
-		Godly,
-		Necromancy, // I refuse to spell it like "Nercomancy" like the game does LOL
+    internal enum WeaponTraits
+    {
+        Normal,
+        Poison,
+        Critical,
+        Healing,
+        Fervour,
+        Godly,
+        Necromancy, // I refuse to spell it like "Nercomancy" like the game does LOL
         Random
-	}
+    }
 
-	internal enum CurseChoices
-	{
+    internal enum CurseChoices
+    {
         TouchofTurua,
         Maelstrom,
         TouchofIthaqua,

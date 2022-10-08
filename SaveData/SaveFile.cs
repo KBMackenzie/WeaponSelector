@@ -1,11 +1,9 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using Socket.Newtonsoft.Json.Utilities.LinqBridge;
+using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using UnityEngine.UIElements;
 
 namespace WeaponSelector
 {
