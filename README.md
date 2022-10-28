@@ -85,5 +85,7 @@ All your weapon choices are saved to a text file named `WeaponChoice.txt` create
 If you find any bugs or issues, you can contact me on Discord! `kelly betty#7936`
 
 ## Changelog
+- 1.0.3 -- Changed arrow sprites for better quality.
+- 1.0.2 -- Clean-up.
 - 1.0.1 -- Clean-up. Fixed a small and barely noticeable bug.
 - 1.0.0 -- Initial upload.

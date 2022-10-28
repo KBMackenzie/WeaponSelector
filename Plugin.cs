@@ -9,7 +9,7 @@ namespace WeaponSelector
     {
         public const string PluginGuid  = "kel.cotl.weaponselector";
         public const string PluginName  = "Weapon Selector";
-        public const string PluginVer   = "1.0.0";
+        public const string PluginVer   = "1.0.3";
 
         internal static ManualLogSource myLogger;
 
