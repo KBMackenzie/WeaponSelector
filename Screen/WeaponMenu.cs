@@ -169,7 +169,7 @@ namespace WeaponSelector
             leftArrow.layer = Layer;
             leftArrow.transform.SetParent(parent);
             leftArrow.transform.localPosition = new Vector3(-360f, y, 0);
-            leftArrow.transform.localScale = new Vector3(1.2f, 1.2f, 0);
+            leftArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
             Image img = leftArrow.AddComponent<Image>();
             img.sprite = ArrowSprites["Left"];
@@ -189,7 +189,7 @@ namespace WeaponSelector
             rightArrow.layer = Layer;
             rightArrow.transform.SetParent(parent);
             rightArrow.transform.localPosition = new Vector3(360, y, 0);
-            rightArrow.transform.localScale = new Vector3(1.2f, 1.2f, 0);
+            rightArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
             Image img2 = rightArrow.AddComponent<Image>();
             img2.sprite = ArrowSprites["Right"];
