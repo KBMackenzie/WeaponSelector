@@ -19,8 +19,6 @@ namespace WeaponSelector
 
             Logger.LogInfo($"Loaded {PluginName} successfully!");
 
-            // FileLog.Reset();
-
             Harmony harmony = new Harmony("kel.harmony.weaponselector");
             harmony.PatchAll();
 
