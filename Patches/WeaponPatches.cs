@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
-using WeaponSelector.Enums;
 using WeaponSelector.Choices;
+using WeaponSelector.Equipment;
 
 namespace WeaponSelector.Patches;
 

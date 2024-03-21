@@ -3,7 +3,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using WeaponSelector.Enums;
+using WeaponSelector.Choices;
 using WeaponSelector.Utils;
 
 namespace WeaponSelector.SaveData;

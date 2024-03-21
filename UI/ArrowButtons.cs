@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using Image = UnityEngine.UI.Image;
-using WeaponSelector.Enums;
+using WeaponSelector.Choices;
 using WeaponSelector.Patches;
 using WeaponSelector.SaveData;
 

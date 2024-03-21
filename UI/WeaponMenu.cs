@@ -2,8 +2,8 @@
 using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
-using WeaponSelector.Enums;
 using WeaponSelector.Choices;
+using WeaponSelector.Equipment;
 using WeaponSelector.Patches;
 
 namespace WeaponSelector.UI;

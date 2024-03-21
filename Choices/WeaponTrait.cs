@@ -1,4 +1,4 @@
-namespace WeaponSelector.Enums;
+namespace WeaponSelector.Choices;
 
 public enum WeaponTrait
 {

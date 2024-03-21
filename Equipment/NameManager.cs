@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WeaponSelector.Enums;
+using WeaponSelector.Choices;
 
-namespace WeaponSelector.Choices;
+namespace WeaponSelector.Equipment;
 
 public static class NameManager
 {
