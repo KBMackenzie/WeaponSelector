@@ -20,7 +20,7 @@ internal class WeaponMenu : MonoBehaviour
         { "Left",  TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
         { "Right", TextureLoader.MakeSprite(Properties.Resources.ArrowR) }
     };
-    private readonly Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox3);
+    private readonly Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox);
 
     private class Arrows
     {

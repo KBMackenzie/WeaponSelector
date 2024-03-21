@@ -83,9 +83,9 @@ namespace WeaponSelector.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] MenuBox3 {
+        internal static byte[] MenuBox {
             get {
-                object obj = ResourceManager.GetObject("MenuBox3", resourceCulture);
+                object obj = ResourceManager.GetObject("MenuBox", resourceCulture);
                 return ((byte[])(obj));
             }
         }
