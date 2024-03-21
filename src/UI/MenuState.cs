@@ -7,9 +7,9 @@ namespace WeaponSelector.UI;
 
 public class MenuState
 {
-    private WeaponChoice Weapon { get; set; }
-    private WeaponTrait Trait { get; set; }
-    private CurseChoice Curse { get; set; }
+    public WeaponChoice Weapon { get; private set; }
+    public WeaponTrait Trait   { get; private set; }
+    public CurseChoice Curse   { get; private set; }
 
     public ChoiceList GetState()
         => new ChoiceList(Weapon, Trait, Curse);
