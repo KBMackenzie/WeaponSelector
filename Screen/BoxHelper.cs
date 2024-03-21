@@ -12,7 +12,7 @@ internal class BoxHelper : MonoBehaviour, IDragHandler
     public RectTransform dragRectTransform;
     public Canvas canvas;
 
-    void Start()
+    private void Start()
     {
         dragRectTransform = GetComponent<RectTransform>();
         // maybe pass heartmenu transform here instead?

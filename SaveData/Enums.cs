@@ -2,7 +2,6 @@
 
 namespace WeaponSelector;
 
-// Random is always the last one. Keep that in mind!
 internal enum WeaponChoices
 {
     Sword,
@@ -10,7 +9,7 @@ internal enum WeaponChoices
     Hammer,
     Dagger,
     Gauntlet,
-    Random,
+    Random,     // Random is always last.
 }
 
 internal enum WeaponTraits
@@ -21,7 +20,7 @@ internal enum WeaponTraits
     Healing,
     Fervour,
     Godly,
-    Necromancy, // I refuse to spell it like "Nercomancy" like the game does LOL
+    Necromancy, // I refuse to spell it "Nercomancy" like the game does LOL
     Random
 }
 

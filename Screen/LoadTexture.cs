@@ -8,7 +8,7 @@ internal class LoadTexture
     // ======== NOTE ~ RESOURCES ========
     // Project resources are already a byte[] array! c:
 
-    FilterMode texFilter = FilterMode.Point;
+    private FilterMode texFilter = FilterMode.Point;
 
     public LoadTexture(FilterMode filter)
     {

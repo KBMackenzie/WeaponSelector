@@ -12,7 +12,7 @@ internal static class SaveFile
      *  1. Look for bugs
      *  2. I don't know */
 
-    static string savePath = null;
+    private static string savePath = null;
 
     public delegate void SaveEvent();
     public static event SaveEvent SaveActions;
@@ -28,7 +28,7 @@ internal static class SaveFile
         set { SaveToFile(value); }
     }
 
-    static void SaveToFile ((WeaponChoices, WeaponTraits, CurseChoices) data)
+    private static void SaveToFile ((WeaponChoices, WeaponTraits, CurseChoices) data)
     {
         int[] index =
         {
@@ -45,7 +45,7 @@ internal static class SaveFile
         SaveActions?.Invoke();
     }
 
-    static (WeaponChoices, WeaponTraits, CurseChoices) LoadSave()
+    private static (WeaponChoices, WeaponTraits, CurseChoices) LoadSave()
     {
         string[] data = File.ReadAllLines(SavePath);
         var choices = EnumHelpers.GetDefault();
@@ -62,7 +62,7 @@ internal static class SaveFile
         return choices;
     }
 
-    static int ParseData(string a, Change type, int max)
+    private static int ParseData(string a, Change type, int max)
     {
         bool flag = Int32.TryParse(a, out int index);
 
@@ -82,7 +82,7 @@ internal static class SaveFile
     }
 
 
-    static string FindSave()
+    private static string FindSave()
     {
         string configName = "WeaponChoice.txt";
 

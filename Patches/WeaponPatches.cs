@@ -15,7 +15,7 @@ internal static class WeaponPatches
 
     [HarmonyPatch(typeof(DataManager), nameof(DataManager.GetRandomWeaponInPool))]
     [HarmonyPostfix]
-    static void GetWeaponPostfix(DataManager __instance, ref EquipmentType __result)
+    private static void GetWeaponPostfix(DataManager __instance, ref EquipmentType __result)
     {
         if (skipWeapon) return;
 
@@ -45,7 +45,7 @@ internal static class WeaponPatches
 
     [HarmonyPatch(typeof(DataManager), nameof(DataManager.GetRandomCurseInPool))]
     [HarmonyPostfix]
-    static void GetCursePostFix(DataManager __instance, ref EquipmentType __result)
+    private static void GetCursePostFix(DataManager __instance, ref EquipmentType __result)
     {
         if (skipCurses) return;
 

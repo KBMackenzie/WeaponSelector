@@ -8,8 +8,8 @@ namespace WeaponSelector;
 internal class WeaponMenu : MonoBehaviour
 {
     public GameObject Parent;
-    LayerMask Layer = LayerMask.NameToLayer("UI");
-    static LoadTexture TexLoader = new LoadTexture(FilterMode.Bilinear);
+    private LayerMask Layer = LayerMask.NameToLayer("UI");
+    private static LoadTexture TexLoader = new LoadTexture(FilterMode.Bilinear);
 
     public readonly Dictionary<string, Sprite> ArrowSprites = new Dictionary<string, Sprite>()
     {
@@ -17,26 +17,26 @@ internal class WeaponMenu : MonoBehaviour
         { "Right",    TexLoader.MakeSprite(Properties.Resources.ArrowR) }
     };
 
-    Sprite BoxSprite = TexLoader.MakeSprite(Properties.Resources.MenuBox3);
+    private Sprite BoxSprite = TexLoader.MakeSprite(Properties.Resources.MenuBox3);
 
     public TextMeshProUGUI UIText;
     public Canvas canvas;
 
     // Arrows
-    Dictionary<Change, (ArrowButtons, ArrowButtons)> Arrows = new Dictionary<Change, (ArrowButtons, ArrowButtons)>();
+    private Dictionary<Change, (ArrowButtons, ArrowButtons)> Arrows = new Dictionary<Change, (ArrowButtons, ArrowButtons)>();
 
     // Text
-    Dictionary<Change, WeaponText> TextObjects = new Dictionary<Change, WeaponText>();
+    private Dictionary<Change, WeaponText> TextObjects = new Dictionary<Change, WeaponText>();
 
     // Library!
-    Library library = new Library();
+    private Library library = new Library();
 
-    void Start() // Initialize
+    private void Start() // Initialize
     {
         CreateMenu();
     }
 
-    void CreateMenu()
+    private void CreateMenu()
     {
         GameObject HeartBox = CreateBox();
         Transform BoxParent = HeartBox.transform;
@@ -62,7 +62,7 @@ internal class WeaponMenu : MonoBehaviour
 
     }
 
-    GameObject CreateBox()
+    private GameObject CreateBox()
     {
         GameObject box = new GameObject();
         box.name = "MenuBox";
@@ -86,19 +86,19 @@ internal class WeaponMenu : MonoBehaviour
         return box;
     }
 
-    Vector3 UIImageSize(Image img)
+    private Vector3 UIImageSize(Image img)
     {
         float w = img.sprite.rect.width;
         float h = img.sprite.rect.height;
         return new Vector3(w, h, 0);
     }
 
-    void CreateHeader(Transform parent, Change type)
+    private void CreateHeader(Transform parent, Change type)
     {
         Dictionary<Change, float> GetY = new Dictionary<Change, float>()
         {
             { Change.Weapon, 343f },
-                { Change.Curse, -163f },
+            { Change.Curse, -163f },
         };
 
         float y = GetY[type];
@@ -117,7 +117,7 @@ internal class WeaponMenu : MonoBehaviour
         textMesh.alignment = TextAlignmentOptions.Center;
     }
 
-    void CreateText(Transform parent, Change type)
+    private void CreateText(Transform parent, Change type)
     {
         // DECIDE THINGS.
         Dictionary<Change, float> GetY = new Dictionary<Change, float>()
@@ -150,7 +150,7 @@ internal class WeaponMenu : MonoBehaviour
         TextObjects.Add(type, textScript);
     }
 
-    void CreateArrows(Transform parent, Change type)
+    private void CreateArrows(Transform parent, Change type)
     {
         // DECIDE THINGS.
         Dictionary<Change, float> GetY = new Dictionary<Change, float>()
@@ -204,7 +204,7 @@ internal class WeaponMenu : MonoBehaviour
         Arrows.Add(type, (arrL, arrR));
     }
 
-    string GetText(Change type)
+    private string GetText(Change type)
     {
         switch (type)
         {
@@ -235,10 +235,8 @@ internal class WeaponMenu : MonoBehaviour
         }
     }
 
-
-
     // Update() holds key presses and all that jazz. c:
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown("j"))
         {

@@ -10,7 +10,7 @@ internal class ScreenPatch
 {
     [HarmonyPatch(typeof(UIPauseMenuController), nameof(UIPauseMenuController.Start))]
     [HarmonyPostfix]
-    static void CreateScreen(UIPauseMenuController __instance)
+    private static void CreateScreen(UIPauseMenuController __instance)
     {
         Transform parentMenu = __instance.gameObject.transform.Find("PauseMenuContainer");
 

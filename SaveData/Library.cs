@@ -7,7 +7,7 @@ internal class Library
     // Names:
     public Dictionary<WeaponChoices, string> WeaponNames => weaponNames;
 
-    Dictionary<WeaponChoices, string> weaponNames = new Dictionary<WeaponChoices, string>()
+    private Dictionary<WeaponChoices, string> weaponNames = new Dictionary<WeaponChoices, string>()
     {
         { WeaponChoices.Sword,      "Sword"     },
         { WeaponChoices.Axe,        "Axe"       },
@@ -19,7 +19,7 @@ internal class Library
 
     public Dictionary<WeaponTraits, string> TraitNames => traitNames;
 
-    Dictionary<WeaponTraits, string> traitNames = new Dictionary<WeaponTraits, string>()
+    private Dictionary<WeaponTraits, string> traitNames = new Dictionary<WeaponTraits, string>()
     {
         { WeaponTraits.Normal,      "Normal"        },
         { WeaponTraits.Poison,      "Bane"          },
@@ -33,7 +33,7 @@ internal class Library
 
     public Dictionary<CurseChoices, string> CurseNames => curseNames;
 
-    Dictionary<CurseChoices, string> curseNames = new Dictionary<CurseChoices, string>()
+    private Dictionary<CurseChoices, string> curseNames = new Dictionary<CurseChoices, string>()
     {
         { CurseChoices.TouchofTurua,        "Touch of Torua"            },
         { CurseChoices.Maelstrom,           "Maelstrom"                 },

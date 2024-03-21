@@ -55,7 +55,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
         menuInstance.UpdateText(type);
     }
 
-    int ParseChoice(int index, int max)
+    private int ParseChoice(int index, int max)
     {
         index = isLeft ? index -= 1 : index += 1;
         if (index >= max) index = 0;
