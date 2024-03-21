@@ -11,7 +11,7 @@ public static class ToEquipment
     public static EquipmentType FromCurse(CurseChoice curse)
         => curseMap[curse];
 
-    public static List<EquipmentType> GetWeaponVariants(EquipmentType type)
+    private static List<EquipmentType> GetWeaponVariants(EquipmentType type)
     {
         int start = (int)type;
         int max = start + 7;
@@ -25,7 +25,7 @@ public static class ToEquipment
         return list;
     }
 
-    /*This is true for all weapons:
+    /* This is true for all weapons:
      * Axe == 100
      * Hammer == 200
      * Dagger == 300 
