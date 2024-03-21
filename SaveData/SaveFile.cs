@@ -46,18 +46,14 @@ internal static class SaveFile
     private static (WeaponChoice, WeaponTrait, CurseChoice) LoadSave()
     {
         string[] data = File.ReadAllLines(SavePath);
-        var choices = EnumHelpers.GetDefault();
-
         int[] a =
         {
-            ParseData(data.IndexIfItExists(0), ChangeType.Weapon, choices.Item1.EnumLength()),
-            ParseData(data.IndexIfItExists(1), ChangeType.Trait,  choices.Item2.EnumLength()),
-            ParseData(data.IndexIfItExists(2), ChangeType.Curse,  choices.Item3.EnumLength()),
+            ParseData(data.IndexIfItExists(0), ChangeType.Weapon, ChoiceManager.WeaponChoiceCount),
+            ParseData(data.IndexIfItExists(1), ChangeType.Trait,  ChoiceManager.TraitChoiceCount),
+            ParseData(data.IndexIfItExists(2), ChangeType.Curse,  ChoiceManager.CurseChoiceCount),
         };
 
-        choices = ((WeaponChoice)a[0], (WeaponTrait)a[1], (CurseChoice)a[2]);
-
-        return choices;
+        return ((WeaponChoice)a[0], (WeaponTrait)a[1], (CurseChoice)a[2]);
     }
 
     private static int ParseData(string a, ChangeType type, int max)
@@ -67,13 +63,13 @@ internal static class SaveFile
         if (!flag)
         {
             Plugin.Instance?.LogWarning($"Couldn't read config data from {Path.GetFileName(SavePath)}. {type} settings now saved as default.");
-            return EnumHelpers.DefaultFromInt(type);
+            return default;
         }
 
         if (index >= max)
         {
             Plugin.Instance?.LogWarning($"Tried to load index out of range. {type} settings now saved as default.");
-            return EnumHelpers.DefaultFromInt(type);
+            return default;
         }
 
         return index;
