@@ -14,8 +14,9 @@ internal class WeaponSelectionMenu : MonoBehaviour
     public Canvas? Canvas;
     public TextMeshProUGUI? TextMesh;
 
-    private readonly LayerMask Layer = LayerMask.NameToLayer("UI");
+    public readonly MenuState State = new MenuState();
 
+    private readonly LayerMask Layer = LayerMask.NameToLayer("UI");
     private readonly static Dictionary<Direction, Sprite> ArrowSprites = new()
     {
         { Direction.Left,  TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
