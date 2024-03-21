@@ -34,8 +34,6 @@ internal class ScreenPatch
         Canvas canvas = __instance.gameObject.GetComponent<Canvas>();
 
         WeaponSelectionMenu menu = screen.AddComponent<WeaponSelectionMenu>();
-        menu.Parent = screen;
-        menu.TextMesh   = textMesh;
-        menu.Canvas = canvas;
+        menu.Initialize(screen, canvas, textMesh);
     }
 }

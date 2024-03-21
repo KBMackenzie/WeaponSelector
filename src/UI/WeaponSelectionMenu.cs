@@ -11,9 +11,9 @@ internal class WeaponSelectionMenu : MonoBehaviour
 {
     public static WeaponSelectionMenu? Instance;
 
-    public GameObject? Parent;
-    public Canvas? Canvas;
-    public TextMeshProUGUI? TextMesh;
+    public GameObject? Parent { get; private set; }
+    public Canvas? Canvas { get; private set; }
+    public TextMeshProUGUI? TextMesh { get; private set; }
 
     public readonly MenuState State = new MenuState();
 
@@ -47,6 +47,13 @@ internal class WeaponSelectionMenu : MonoBehaviour
     private void Start()
     {
         CreateMenu();
+    }
+
+    public void Initialize(GameObject parent, Canvas canvas, TextMeshProUGUI textMesh)
+    {
+        Parent = parent;
+        Canvas = canvas;
+        TextMesh = textMesh;
     }
 
     private void CreateMenu()
