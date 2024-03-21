@@ -4,7 +4,6 @@ using UnityEngine;
 using Image = UnityEngine.UI.Image;
 using WeaponSelector.Choices;
 using WeaponSelector.Equipment;
-using WeaponSelector.Patches;
 
 namespace WeaponSelector.UI;
 
@@ -206,6 +205,8 @@ internal class WeaponMenu : MonoBehaviour
 
     private string GetText(ChangeType type)
     {
+        // todo: MAKE THIS NOT RELY ON PATCHES
+        /*
         switch (type)
         {
             case ChangeType.Weapon:
@@ -215,12 +216,15 @@ internal class WeaponMenu : MonoBehaviour
             case ChangeType.Curse:
                 return NameManager.GetCurseName(WeaponPatches.Curse);
         }
+        */
         return "??";
     }
 
     public void UpdateText(ChangeType type)
     {
         // TODO: Make this dynamically display something else and not just weapon names
+        // todo: make this NOT RELY ON PATCHES!
+        /*
         switch (type)
         {
             case ChangeType.Weapon:
@@ -233,6 +237,7 @@ internal class WeaponMenu : MonoBehaviour
                 TextObjects[type].tmp.text = NameManager.GetCurseName(WeaponPatches.Curse);
                 break;
         }
+        */
     }
 
     // Update() holds key presses and all that jazz. c:
