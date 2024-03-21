@@ -1,15 +1,16 @@
 ﻿using HarmonyLib;
 using WeaponSelector.Choices;
 using WeaponSelector.Equipment;
+using WeaponSelector.SaveData;
 
 namespace WeaponSelector.Patches;
 
 [HarmonyPatch]
 internal static class WeaponPatches
 {
-    public static WeaponChoice Weapon;
-    public static WeaponTrait Trait;
-    public static CurseChoice Curse;
+    private static WeaponChoice Weapon => SaveFile.SaveData.Weapon;
+    private static WeaponTrait  Trait  => SaveFile.SaveData.Trait;
+    private static CurseChoice  Curse  => SaveFile.SaveData.Curse;
 
     private static bool ShouldSkipWeapon()
         => Weapon == WeaponChoice.Random && Trait == WeaponTrait.Random;
