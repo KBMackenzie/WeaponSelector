@@ -15,12 +15,12 @@ internal class WeaponSelectionMenu : MonoBehaviour
 
     private readonly LayerMask Layer = LayerMask.NameToLayer("UI");
 
-    private readonly Dictionary<Direction, Sprite> ArrowSprites = new()
+    private readonly static Dictionary<Direction, Sprite> ArrowSprites = new()
     {
         { Direction.Left,  TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
         { Direction.Right, TextureLoader.MakeSprite(Properties.Resources.ArrowR) }
     };
-    private readonly Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox);
+    private readonly static Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox);
 
     private class Arrows
     {
@@ -75,16 +75,14 @@ internal class WeaponSelectionMenu : MonoBehaviour
         box.transform.SetParent(Parent?.transform);
         box.transform.localPosition = new Vector3(0f, -100f, 0);
 
-        Image img = box.AddComponent<Image>();
-        img.sprite = BoxSprite;
-        img.SetNativeSize();
-        img.preserveAspect = true;
-        TextureLoader.ChangeOpacity(img, 0.8f);
+        Image image = box.AddComponent<Image>();
+        image.sprite = BoxSprite;
+        image.SetNativeSize();
+        image.preserveAspect = true;
+        TextureLoader.ChangeOpacity(image, 0.8f);
 
-        BoxHelper helper = box.AddComponent<BoxHelper>();
-        helper.menuInstance = this;
-        helper.img = img;
-        helper.canvas = Canvas;
+        Draggable draggable = box.AddComponent<Draggable>();
+        draggable.Initialize(Canvas);
 
         box.transform.localScale = new Vector3(0.5f, 0.5f, 0);
 
