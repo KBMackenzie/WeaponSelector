@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
-namespace WeaponSelector;
+namespace WeaponSelector.UI;
 
 internal class LoadTexture
 {

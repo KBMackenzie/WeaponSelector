@@ -2,8 +2,9 @@
 using Lamb.UI.PauseMenu;
 using TMPro;
 using UnityEngine;
+using WeaponSelector.UI;
 
-namespace WeaponSelector;
+namespace WeaponSelector.Patches;
 
 [HarmonyPatch]
 internal class ScreenPatch

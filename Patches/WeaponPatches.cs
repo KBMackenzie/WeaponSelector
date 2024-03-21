@@ -1,6 +1,8 @@
 ﻿using HarmonyLib;
+using WeaponSelector.Enums;
+using WeaponSelector.Choices;
 
-namespace WeaponSelector;
+namespace WeaponSelector.Patches;
 
 [HarmonyPatch]
 internal static class WeaponPatches

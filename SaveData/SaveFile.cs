@@ -3,19 +3,17 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using WeaponSelector.Enums;
+using WeaponSelector.Utils;
 
-namespace WeaponSelector;
+namespace WeaponSelector.SaveData;
 
 internal static class SaveFile
 {
-    /* TODO:
-     *  1. Look for bugs
-     *  2. I don't know */
-
-    private static string savePath = null;
+    private static string? savePath = null;
 
     public delegate void SaveEvent();
-    public static event SaveEvent SaveActions;
+    public static event SaveEvent? SaveActions;
 
     public static string SavePath
     {

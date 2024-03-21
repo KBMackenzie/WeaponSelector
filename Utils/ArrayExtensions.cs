@@ -1,4 +1,4 @@
-﻿namespace WeaponSelector;
+﻿namespace WeaponSelector.Utils;
 
 internal static class ArrayExtensions
 {

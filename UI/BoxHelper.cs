@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace WeaponSelector;
+namespace WeaponSelector.UI;
 
 internal class BoxHelper : MonoBehaviour, IDragHandler
 {

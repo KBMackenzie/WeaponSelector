@@ -1,4 +1,5 @@
 ﻿using System;
+using WeaponSelector.Enums;
 
 namespace WeaponSelector;
 

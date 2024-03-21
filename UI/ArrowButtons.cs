@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using Image = UnityEngine.UI.Image;
+using WeaponSelector.Enums;
+using WeaponSelector.Patches;
+using WeaponSelector.SaveData;
 
-namespace WeaponSelector;
+namespace WeaponSelector.UI;
 
 internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {

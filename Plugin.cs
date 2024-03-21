@@ -1,5 +1,7 @@
 using BepInEx;
 using HarmonyLib;
+using WeaponSelector.Patches;
+using WeaponSelector.SaveData;
 
 namespace WeaponSelector;
 
