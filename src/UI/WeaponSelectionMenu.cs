@@ -105,13 +105,12 @@ internal class WeaponSelectionMenu : MonoBehaviour
 
     private void CreateHeader(Transform parent, MenuOption option)
     {
-        Dictionary<MenuOption, float> GetY = new Dictionary<MenuOption, float>()
+        float yPosition = option switch
         {
-            { MenuOption.Weapon, 343f },
-            { MenuOption.Curse, -163f },
+            MenuOption.Weapon =>  343f,
+            MenuOption.Curse  => -163f,
+            _                 => default,
         };
-
-        float y = GetY[option];
 
         GameObject textBox = new GameObject();
         textBox.name = $"UIText_Header_{option}";
@@ -123,21 +122,19 @@ internal class WeaponSelectionMenu : MonoBehaviour
         textMesh.fontSize = (TextMesh?.fontSize ?? 12) * 0.7f;
         textMesh.text = $"Choose a {option}:";
 
-        textBox.transform.localPosition = new Vector3(0, y, 0);
+        textBox.transform.localPosition = new Vector3(0, yPosition, 0);
         textMesh.alignment = TextAlignmentOptions.Center;
     }
 
     private void CreateText(Transform parent, MenuOption option)
     {
-        // DECIDE THINGS.
-        Dictionary<MenuOption, float> GetY = new Dictionary<MenuOption, float>()
+        float yPosition = option switch
         {
-            { MenuOption.Weapon,   189f },
-            { MenuOption.Trait,    20f  },
-            { MenuOption.Curse,   -314f }
+            MenuOption.Weapon =>  189f,
+            MenuOption.Trait  =>  20f,
+            MenuOption.Curse  => -314f,
+            _                 => default,
         };
-
-        float y = GetY[option];
 
         GameObject textBox = new GameObject();
         textBox.name = $"UIText_{option}";
@@ -149,7 +146,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         textMesh.fontSize = TextMesh?.fontSize ?? 12;
         textMesh.text = GetText(option);
 
-        textBox.transform.localPosition = new Vector3(0, y, 0);
+        textBox.transform.localPosition = new Vector3(0, yPosition, 0);
         textMesh.alignment = TextAlignmentOptions.Center;
 
         MenuText menuText = textBox.AddComponent<MenuText>();
@@ -160,20 +157,19 @@ internal class WeaponSelectionMenu : MonoBehaviour
 
     private void CreateArrows(Transform parent, MenuOption option)
     {
-        Dictionary<MenuOption, float> GetY = new Dictionary<MenuOption, float>()
+        float yPosition = option switch
         {
-            { MenuOption.Weapon,  193f  },
-            { MenuOption.Trait,   30f   },
-            { MenuOption.Curse,  -304f  }
+            MenuOption.Weapon =>  193f,
+            MenuOption.Trait  =>  30f,
+            MenuOption.Curse  => -304f,
+            _                 => default,
         };
-
-        float y = GetY[option];
 
         GameObject leftArrow = new GameObject();
         leftArrow.name = $"LeftArrow_{option}";
         leftArrow.layer = Layer;
         leftArrow.transform.SetParent(parent);
-        leftArrow.transform.localPosition = new Vector3(-360f, y, 0);
+        leftArrow.transform.localPosition = new Vector3(-360f, yPosition, 0);
         leftArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
         Image leftArrowImage = leftArrow.AddComponent<Image>();
@@ -192,7 +188,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         rightArrow.name = $"RightArrow_{option}";
         rightArrow.layer = Layer;
         rightArrow.transform.SetParent(parent);
-        rightArrow.transform.localPosition = new Vector3(360, y, 0);
+        rightArrow.transform.localPosition = new Vector3(360, yPosition, 0);
         rightArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
         Image rightArrowImage = rightArrow.AddComponent<Image>();
