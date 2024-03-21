@@ -2,34 +2,33 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 
-namespace WeaponSelector
+namespace WeaponSelector;
+
+[BepInPlugin(PluginGuid, PluginName, PluginVer)]
+public class Plugin : BaseUnityPlugin
 {
-    [BepInPlugin(PluginGuid, PluginName, PluginVer)]
-    public class Plugin : BaseUnityPlugin
+    public const string PluginGuid  = "kel.cotl.weaponselector";
+    public const string PluginName  = "Weapon Selector";
+    public const string PluginVer   = "1.0.3";
+
+    internal static ManualLogSource myLogger;
+
+    private void Awake()
     {
-        public const string PluginGuid  = "kel.cotl.weaponselector";
-        public const string PluginName  = "Weapon Selector";
-        public const string PluginVer   = "1.0.3";
+        myLogger = Logger; // Make log source
 
-        internal static ManualLogSource myLogger;
+        Logger.LogInfo($"Loaded {PluginName} successfully!");
 
-        private void Awake()
-        {
-            myLogger = Logger; // Make log source
+        Harmony harmony = new Harmony("kel.harmony.weaponselector");
+        harmony.PatchAll();
 
-            Logger.LogInfo($"Loaded {PluginName} successfully!");
+        SaveFile.SaveEvent Choice = () => WeaponPatches.Weapon = SaveFile.SaveData.Item1;
+        SaveFile.SaveEvent Trait = () => WeaponPatches.Trait = SaveFile.SaveData.Item2;
+        SaveFile.SaveEvent Curse = () => WeaponPatches.Curse = SaveFile.SaveData.Item3;
 
-            Harmony harmony = new Harmony("kel.harmony.weaponselector");
-            harmony.PatchAll();
-
-            SaveFile.SaveEvent Choice = () => WeaponPatches.Weapon = SaveFile.SaveData.Item1;
-            SaveFile.SaveEvent Trait = () => WeaponPatches.Trait = SaveFile.SaveData.Item2;
-            SaveFile.SaveEvent Curse = () => WeaponPatches.Curse = SaveFile.SaveData.Item3;
-
-            SaveFile.SaveActions += Choice;
-            SaveFile.SaveActions += Trait;
-            SaveFile.SaveActions += Curse;
-            Choice(); Trait(); Curse();
-        }
+        SaveFile.SaveActions += Choice;
+        SaveFile.SaveActions += Trait;
+        SaveFile.SaveActions += Curse;
+        Choice(); Trait(); Curse();
     }
 }

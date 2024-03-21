@@ -6,59 +6,58 @@ using Lamb;
 using System.Collections;
 using UnityEngine;
 
-namespace WeaponSelector
+namespace WeaponSelector;
+
+[HarmonyPatch]
+internal static class WeaponPatches
 {
-    [HarmonyPatch]
-    internal static class WeaponPatches
+    public static WeaponChoices Weapon;
+    public static WeaponTraits Trait;
+    public static CurseChoices Curse;
+
+    static bool skipWeapon => Weapon == WeaponChoices.Random && Trait == WeaponTraits.Random;
+    static bool skipCurses => Curse == CurseChoices.Random;
+
+
+    [HarmonyPatch(typeof(DataManager), nameof(DataManager.GetRandomWeaponInPool))]
+    [HarmonyPostfix]
+    static void GetWeaponPostfix(DataManager __instance, ref EquipmentType __result)
     {
-        public static WeaponChoices Weapon;
-        public static WeaponTraits Trait;
-        public static CurseChoices Curse;
+        if (skipWeapon) return;
 
-        static bool skipWeapon => Weapon == WeaponChoices.Random && Trait == WeaponTraits.Random;
-        static bool skipCurses => Curse == CurseChoices.Random;
+        // Library!
+        Library library = new Library();
 
-
-        [HarmonyPatch(typeof(DataManager), nameof(DataManager.GetRandomWeaponInPool))]
-        [HarmonyPostfix]
-        static void GetWeaponPostfix(DataManager __instance, ref EquipmentType __result)
+        if (Weapon != WeaponChoices.Random) // Not random weapon
         {
-            if (skipWeapon) return;
-
-            // Library!
-            Library library = new Library();
-
-            if (Weapon != WeaponChoices.Random) // Not random weapon
+            if (Trait != WeaponTraits.Random) // Chosen trait
             {
-                if (Trait != WeaponTraits.Random) // Chosen trait
-                {
-                    __result = library.Weapons[Weapon][(int)Trait];
-                }
-                else // Random trait
-                {
-                    // The "-1" is so WeaponTraits.Random isn't rolled
-                    int random = UnityEngine.Random.Range(0, Trait.EnumLength() - 1);
-                    __result = library.Weapons[Weapon][random];
-                }
+                __result = library.Weapons[Weapon][(int)Trait];
             }
-            else if (Trait != WeaponTraits.Random) // Random weapon, chosen trait
+            else // Random trait
             {
-                // The "-1" is so WeaponChoices.Random isn't rolled
-                int random = UnityEngine.Random.Range(0, Weapon.EnumLength() - 1);
-                __result = library.Weapons[(WeaponChoices)random][(int)Trait];
+                // The "-1" is so WeaponTraits.Random isn't rolled
+                int random = UnityEngine.Random.Range(0, Trait.EnumLength() - 1);
+                __result = library.Weapons[Weapon][random];
             }
         }
-
-        [HarmonyPatch(typeof(DataManager), nameof(DataManager.GetRandomCurseInPool))]
-        [HarmonyPostfix]
-        static void GetCursePostFix(DataManager __instance, ref EquipmentType __result)
+        else if (Trait != WeaponTraits.Random) // Random weapon, chosen trait
         {
-            if (skipCurses) return;
-
-            // Library!
-            Library library = new Library();
-
-            __result = library.Curses[Curse];
+            // The "-1" is so WeaponChoices.Random isn't rolled
+            int random = UnityEngine.Random.Range(0, Weapon.EnumLength() - 1);
+            __result = library.Weapons[(WeaponChoices)random][(int)Trait];
         }
+    }
+
+    [HarmonyPatch(typeof(DataManager), nameof(DataManager.GetRandomCurseInPool))]
+    [HarmonyPostfix]
+    static void GetCursePostFix(DataManager __instance, ref EquipmentType __result)
+    {
+        if (skipCurses) return;
+
+        // Library!
+        Library library = new Library();
+
+        __result = library.Curses[Curse];
     }
 }
