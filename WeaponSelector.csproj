@@ -3,16 +3,10 @@
     <PropertyGroup>
         <AssemblyName>WeaponSelector</AssemblyName>
 		<Description>Lets you select your starting weapon in dungeons in COTL.</Description>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
-        <ReleaseVersion>1.0.0</ReleaseVersion>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugType>full</DebugType>
-
-        <OutputPath Condition=" '$(SolutionDir)' != '' ">$(SolutionDir)bin\$(Configuration)\$(MSBuildProjectName)\</OutputPath>
-        <OutputPath Condition=" '$(SolutionDir)' == '' ">$(ProjectDir)bin\$(Configuration)\$(MSBuildProjectName)\</OutputPath>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
