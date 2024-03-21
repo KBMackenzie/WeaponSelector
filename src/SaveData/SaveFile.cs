@@ -37,8 +37,8 @@ internal static class SaveFile
         string[] data = File.ReadAllLines(GetSavePath());
         ChoiceList choices = new ChoiceList(
             Parser.FromNumber(data.IndexIfItExists(0), ChoiceManager.ToWeapon),
-            Parser.FromNumber(data.IndexIfItExists(0), ChoiceManager.ToTrait),
-            Parser.FromNumber(data.IndexIfItExists(0), ChoiceManager.ToCurse)
+            Parser.FromNumber(data.IndexIfItExists(1), ChoiceManager.ToTrait),
+            Parser.FromNumber(data.IndexIfItExists(2), ChoiceManager.ToCurse)
         );
         saveData = choices;
         return choices;
