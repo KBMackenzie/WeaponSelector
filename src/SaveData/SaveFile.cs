@@ -61,7 +61,7 @@ internal static class SaveFile
             return savePath;
         }
 
-        if (files.Length >= 1)
+        if (files.Length > 1)
         {
             Plugin.Instance?.LogWarning($"More than one '{configFileName}' file found in the plugins folder. Unexpected behavior may occur!");
         }
