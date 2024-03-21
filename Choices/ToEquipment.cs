@@ -4,10 +4,10 @@ namespace WeaponSelector;
 
 public static class ToEquipment
 {
-    public static List<EquipmentType> FromWeapon(WeaponChoices weapon)
+    public static List<EquipmentType> FromWeapon(WeaponChoice weapon)
         => weaponMap[weapon];
 
-    public static EquipmentType FromCurse(CurseChoices curse)
+    public static EquipmentType FromCurse(CurseChoice curse)
         => curseMap[curse];
 
     public static List<EquipmentType> GetWeaponVariants(EquipmentType type)
@@ -33,36 +33,36 @@ public static class ToEquipment
      * And all of them have +6 variants on top of the normal one.
      * Sword ranges from 0 to 6, for example. Axe ranges from 100 to 106.*/
 
-    private static Dictionary<WeaponChoices, List<EquipmentType>> weaponMap = new()
+    private static Dictionary<WeaponChoice, List<EquipmentType>> weaponMap = new()
     {
-        { WeaponChoices.Sword,      GetWeaponVariants(EquipmentType.Sword)      },
-        { WeaponChoices.Axe,        GetWeaponVariants(EquipmentType.Axe)        },
-        { WeaponChoices.Hammer,     GetWeaponVariants(EquipmentType.Hammer)     },
-        { WeaponChoices.Dagger,     GetWeaponVariants(EquipmentType.Dagger)     },
-        { WeaponChoices.Gauntlet,   GetWeaponVariants(EquipmentType.Gauntlet)   },
+        { WeaponChoice.Sword,      GetWeaponVariants(EquipmentType.Sword)      },
+        { WeaponChoice.Axe,        GetWeaponVariants(EquipmentType.Axe)        },
+        { WeaponChoice.Hammer,     GetWeaponVariants(EquipmentType.Hammer)     },
+        { WeaponChoice.Dagger,     GetWeaponVariants(EquipmentType.Dagger)     },
+        { WeaponChoice.Gauntlet,   GetWeaponVariants(EquipmentType.Gauntlet)   },
     };
 
-    private static Dictionary<CurseChoices, EquipmentType> curseMap = new()
+    private static Dictionary<CurseChoice, EquipmentType> curseMap = new()
     {
-        { CurseChoices.TouchofTurua,        EquipmentType.Tentacles                         },
-        { CurseChoices.Maelstrom,           EquipmentType.Tentacles_Circular                },
-        { CurseChoices.TouchofIthaqua,      EquipmentType.Tentacles_Ice                     },
-        { CurseChoices.TouchoftheRevenant,  EquipmentType.Tentacles_Necromancy              },
-        { CurseChoices.DivineBlast,         EquipmentType.EnemyBlast                        },
-        { CurseChoices.DivineGuardian,      EquipmentType.EnemyBlast_DeflectsProjectiles    },
-        { CurseChoices.DivineBlizzard,      EquipmentType.EnemyBlast_Ice                    },
-        { CurseChoices.DivineBlight,        EquipmentType.EnemyBlast_Poison                 },
-        { CurseChoices.IchorThrown,         EquipmentType.ProjectileAOE                     },
-        { CurseChoices.PointofCorruption,   EquipmentType.ProjectileAOE_ExplosiveImpact     },
-        { CurseChoices.PathoftheRighteous,  EquipmentType.ProjectileAOE_GoopTrail           },
-        { CurseChoices.CalloftheCrown,      EquipmentType.ProjectileAOE_Charm               },
-        { CurseChoices.FlamingShot,         EquipmentType.Fireball                          },
-        { CurseChoices.HoundsofFate,        EquipmentType.Fireball_Swarm                    },
-        { CurseChoices.CleansingFire,       EquipmentType.Fireball_Triple                   },
-        { CurseChoices.StrikeoftheCrown,    EquipmentType.Fireball_Charm                    },
-        { CurseChoices.DeathsSweep,         EquipmentType.MegaSlash                         },
-        { CurseChoices.DeathsAttendant,     EquipmentType.MegaSlash_Necromancy              },
-        { CurseChoices.DeathsSquall,        EquipmentType.MegaSlash_Ice                     },
-        { CurseChoices.OathoftheCrown,      EquipmentType.MegaSlash_Charm                   },
+        { CurseChoice.TouchofTurua,        EquipmentType.Tentacles                         },
+        { CurseChoice.Maelstrom,           EquipmentType.Tentacles_Circular                },
+        { CurseChoice.TouchofIthaqua,      EquipmentType.Tentacles_Ice                     },
+        { CurseChoice.TouchoftheRevenant,  EquipmentType.Tentacles_Necromancy              },
+        { CurseChoice.DivineBlast,         EquipmentType.EnemyBlast                        },
+        { CurseChoice.DivineGuardian,      EquipmentType.EnemyBlast_DeflectsProjectiles    },
+        { CurseChoice.DivineBlizzard,      EquipmentType.EnemyBlast_Ice                    },
+        { CurseChoice.DivineBlight,        EquipmentType.EnemyBlast_Poison                 },
+        { CurseChoice.IchorThrown,         EquipmentType.ProjectileAOE                     },
+        { CurseChoice.PointofCorruption,   EquipmentType.ProjectileAOE_ExplosiveImpact     },
+        { CurseChoice.PathoftheRighteous,  EquipmentType.ProjectileAOE_GoopTrail           },
+        { CurseChoice.CalloftheCrown,      EquipmentType.ProjectileAOE_Charm               },
+        { CurseChoice.FlamingShot,         EquipmentType.Fireball                          },
+        { CurseChoice.HoundsofFate,        EquipmentType.Fireball_Swarm                    },
+        { CurseChoice.CleansingFire,       EquipmentType.Fireball_Triple                   },
+        { CurseChoice.StrikeoftheCrown,    EquipmentType.Fireball_Charm                    },
+        { CurseChoice.DeathsSweep,         EquipmentType.MegaSlash                         },
+        { CurseChoice.DeathsAttendant,     EquipmentType.MegaSlash_Necromancy              },
+        { CurseChoice.DeathsSquall,        EquipmentType.MegaSlash_Ice                     },
+        { CurseChoice.OathoftheCrown,      EquipmentType.MegaSlash_Charm                   },
     };
 }

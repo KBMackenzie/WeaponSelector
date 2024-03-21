@@ -4,59 +4,59 @@ namespace WeaponSelector;
 
 public static class NameManager
 {
-    public static string GetWeaponName(WeaponChoices weapon)
+    public static string GetWeaponName(WeaponChoice weapon)
         => weaponNames[weapon];
 
-    public static string GetTraitName(WeaponTraits trait)
+    public static string GetTraitName(WeaponTrait trait)
         => traitNames[trait];
 
-    public static string GetCurseName(CurseChoices curse)
+    public static string GetCurseName(CurseChoice curse)
         => curseNames[curse];
 
-    private static Dictionary<WeaponChoices, string> weaponNames = new()
+    private static Dictionary<WeaponChoice, string> weaponNames = new()
     {
-        { WeaponChoices.Sword,      "Sword"     },
-        { WeaponChoices.Axe,        "Axe"       },
-        { WeaponChoices.Hammer,     "Hammer"    },
-        { WeaponChoices.Dagger,     "Dagger"    },
-        { WeaponChoices.Gauntlet,   "Gauntlet"  },
-        { WeaponChoices.Random,     "Random"    },
+        { WeaponChoice.Sword,      "Sword"     },
+        { WeaponChoice.Axe,        "Axe"       },
+        { WeaponChoice.Hammer,     "Hammer"    },
+        { WeaponChoice.Dagger,     "Dagger"    },
+        { WeaponChoice.Gauntlet,   "Gauntlet"  },
+        { WeaponChoice.Random,     "Random"    },
     };
 
-    private static Dictionary<WeaponTraits, string> traitNames = new()
+    private static Dictionary<WeaponTrait, string> traitNames = new()
     {
-        { WeaponTraits.Normal,      "Normal"        },
-        { WeaponTraits.Poison,      "Bane"          },
-        { WeaponTraits.Critical,    "Merciless"     },
-        { WeaponTraits.Healing,     "Vampiric"      },
-        { WeaponTraits.Fervour,     "Zealous"       },
-        { WeaponTraits.Godly,       "Godly"         },
-        { WeaponTraits.Necromancy,  "Necromantic"   },
-        { WeaponTraits.Random,      "Random"        },
+        { WeaponTrait.Normal,      "Normal"        },
+        { WeaponTrait.Poison,      "Bane"          },
+        { WeaponTrait.Critical,    "Merciless"     },
+        { WeaponTrait.Healing,     "Vampiric"      },
+        { WeaponTrait.Fervour,     "Zealous"       },
+        { WeaponTrait.Godly,       "Godly"         },
+        { WeaponTrait.Necromancy,  "Necromantic"   },
+        { WeaponTrait.Random,      "Random"        },
     };
 
-    private static Dictionary<CurseChoices, string> curseNames = new()
+    private static Dictionary<CurseChoice, string> curseNames = new()
     {
-        { CurseChoices.TouchofTurua,        "Touch of Torua"            },
-        { CurseChoices.Maelstrom,           "Maelstrom"                 },
-        { CurseChoices.TouchofIthaqua,      "Touch of Ithaqua"          },
-        { CurseChoices.TouchoftheRevenant,  "Touch of the Revenant"     },
-        { CurseChoices.DivineBlast,         "Divine Blast"              },
-        { CurseChoices.DivineGuardian,      "Divine Guardian"           },
-        { CurseChoices.DivineBlizzard,      "Divine Blizzard"           },
-        { CurseChoices.DivineBlight,        "Divine Blight"             },
-        { CurseChoices.IchorThrown,         "Ichor Thrown"              },
-        { CurseChoices.PointofCorruption,   "Point of Corruption"       },
-        { CurseChoices.PathoftheRighteous,  "Path of the Righteous"     },
-        { CurseChoices.CalloftheCrown,      "Call of the Crown"         },
-        { CurseChoices.FlamingShot,         "Flaming Shot"              },
-        { CurseChoices.HoundsofFate,        "Hounds of Fate"            },
-        { CurseChoices.CleansingFire,       "Cleansing Fire"            },
-        { CurseChoices.StrikeoftheCrown,    "Strike of the Crown"       },
-        { CurseChoices.DeathsSweep,         "Death's Sweep"             },
-        { CurseChoices.DeathsAttendant,     "Death's Attendant"         },
-        { CurseChoices.DeathsSquall,        "Death's Squall"            },
-        { CurseChoices.OathoftheCrown,      "Oath of the Crown"         },
-        { CurseChoices.Random,              "Random"                    },
+        { CurseChoice.TouchofTurua,        "Touch of Torua"            },
+        { CurseChoice.Maelstrom,           "Maelstrom"                 },
+        { CurseChoice.TouchofIthaqua,      "Touch of Ithaqua"          },
+        { CurseChoice.TouchoftheRevenant,  "Touch of the Revenant"     },
+        { CurseChoice.DivineBlast,         "Divine Blast"              },
+        { CurseChoice.DivineGuardian,      "Divine Guardian"           },
+        { CurseChoice.DivineBlizzard,      "Divine Blizzard"           },
+        { CurseChoice.DivineBlight,        "Divine Blight"             },
+        { CurseChoice.IchorThrown,         "Ichor Thrown"              },
+        { CurseChoice.PointofCorruption,   "Point of Corruption"       },
+        { CurseChoice.PathoftheRighteous,  "Path of the Righteous"     },
+        { CurseChoice.CalloftheCrown,      "Call of the Crown"         },
+        { CurseChoice.FlamingShot,         "Flaming Shot"              },
+        { CurseChoice.HoundsofFate,        "Hounds of Fate"            },
+        { CurseChoice.CleansingFire,       "Cleansing Fire"            },
+        { CurseChoice.StrikeoftheCrown,    "Strike of the Crown"       },
+        { CurseChoice.DeathsSweep,         "Death's Sweep"             },
+        { CurseChoice.DeathsAttendant,     "Death's Attendant"         },
+        { CurseChoice.DeathsSquall,        "Death's Squall"            },
+        { CurseChoice.OathoftheCrown,      "Oath of the Crown"         },
+        { CurseChoice.Random,              "Random"                    },
     };
 }

@@ -2,7 +2,7 @@
 
 namespace WeaponSelector;
 
-public enum WeaponChoices
+public enum WeaponChoice
 {
     Sword,
     Axe,
@@ -12,7 +12,7 @@ public enum WeaponChoices
     Random,     // Random is always last.
 }
 
-public enum WeaponTraits
+public enum WeaponTrait
 {
     Normal,
     Poison,
@@ -24,7 +24,7 @@ public enum WeaponTraits
     Random
 }
 
-public enum CurseChoices
+public enum CurseChoice
 {
     TouchofTurua,
     Maelstrom,
@@ -58,9 +58,9 @@ public enum Change
 
 public static class EnumHelpers
 {
-    public static (WeaponChoices, WeaponTraits, CurseChoices) GetDefault()
+    public static (WeaponChoice, WeaponTrait, CurseChoice) GetDefault()
     {
-        return (WeaponChoices.Random, WeaponTraits.Random, CurseChoices.Random);
+        return (WeaponChoice.Random, WeaponTrait.Random, CurseChoice.Random);
     }
 
     public static int DefaultFromInt(Change type)
@@ -81,16 +81,16 @@ public static class EnumHelpers
     }
 
     // Extension methods
-    public static int EnumLength(this WeaponChoices a)
+    public static int EnumLength(this WeaponChoice a)
     {
-        return Enum.GetNames(typeof(WeaponChoices)).Length;
+        return Enum.GetNames(typeof(WeaponChoice)).Length;
     }
-    public static int EnumLength(this WeaponTraits a)
+    public static int EnumLength(this WeaponTrait a)
     {
-        return Enum.GetNames(typeof(WeaponTraits)).Length;
+        return Enum.GetNames(typeof(WeaponTrait)).Length;
     }
-    public static int EnumLength(this CurseChoices a)
+    public static int EnumLength(this CurseChoice a)
     {
-        return Enum.GetNames(typeof(CurseChoices)).Length;
+        return Enum.GetNames(typeof(CurseChoice)).Length;
     }
 }

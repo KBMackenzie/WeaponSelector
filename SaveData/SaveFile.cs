@@ -22,13 +22,13 @@ internal static class SaveFile
         get => savePath ?? FindSave();
     }
 
-    public static (WeaponChoices, WeaponTraits, CurseChoices) SaveData
+    public static (WeaponChoice, WeaponTrait, CurseChoice) SaveData
     {
         get { return LoadSave(); }
         set { SaveToFile(value); }
     }
 
-    private static void SaveToFile ((WeaponChoices, WeaponTraits, CurseChoices) data)
+    private static void SaveToFile ((WeaponChoice, WeaponTrait, CurseChoice) data)
     {
         int[] index =
         {
@@ -45,7 +45,7 @@ internal static class SaveFile
         SaveActions?.Invoke();
     }
 
-    private static (WeaponChoices, WeaponTraits, CurseChoices) LoadSave()
+    private static (WeaponChoice, WeaponTrait, CurseChoice) LoadSave()
     {
         string[] data = File.ReadAllLines(SavePath);
         var choices = EnumHelpers.GetDefault();
@@ -57,7 +57,7 @@ internal static class SaveFile
             ParseData(data.IndexIfItExists(2), Change.Curse,  choices.Item3.EnumLength()),
         };
 
-        choices = ((WeaponChoices)a[0], (WeaponTraits)a[1], (CurseChoices)a[2]);
+        choices = ((WeaponChoice)a[0], (WeaponTrait)a[1], (CurseChoice)a[2]);
 
         return choices;
     }

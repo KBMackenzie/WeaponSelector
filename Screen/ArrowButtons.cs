@@ -30,7 +30,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
                     int cur = (int)WeaponPatches.Weapon;
                     int max = WeaponPatches.Weapon.EnumLength();
                     int choice = ParseChoice(cur, max);
-                    data.Item1 = (WeaponChoices)choice;
+                    data.Item1 = (WeaponChoice)choice;
                 }
                 break;
             case Change.Trait:
@@ -38,7 +38,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
                     int cur = (int)WeaponPatches.Trait;
                     int max = WeaponPatches.Trait.EnumLength();
                     int choice = ParseChoice(cur, max);
-                    data.Item2 = (WeaponTraits)choice;
+                    data.Item2 = (WeaponTrait)choice;
                 }
                 break;
             case Change.Curse:
@@ -46,7 +46,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
                     int cur = (int)WeaponPatches.Curse;
                     int max = WeaponPatches.Curse.EnumLength();
                     int choice = ParseChoice(cur, max);
-                    data.Item3 = (CurseChoices)choice;
+                    data.Item3 = (CurseChoice)choice;
                 }
                 break;
         }
