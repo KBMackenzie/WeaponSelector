@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 using WeaponSelector.Utils;
+using WeaponSelector.Choices;
 
 namespace WeaponSelector.UI;
 
@@ -207,43 +208,19 @@ internal class WeaponSelectionMenu : MonoBehaviour
     }
 
     private string GetText(MenuOption option)
-    {
-        // todo: MAKE THIS NOT RELY ON PATCHES
-        /*
-        switch (type)
+        => option switch
         {
-            case ChangeType.Weapon:
-                return NameManager.GetWeaponName(WeaponPatches.Weapon);
-            case ChangeType.Trait:
-                return NameManager.GetTraitName(WeaponPatches.Trait);
-            case ChangeType.Curse:
-                return NameManager.GetCurseName(WeaponPatches.Curse);
-        }
-        */
-        return "??";
-    }
+            MenuOption.Weapon => NameManager.GetWeaponName(State.Weapon),
+            MenuOption.Trait  => NameManager.GetTraitName(State.Trait),
+            MenuOption.Curse  => NameManager.GetCurseName(State.Curse),
+            _ => "??"
+        };
 
     public void UpdateText(MenuOption option)
     {
-        // TODO: Make this dynamically display something else and not just weapon names
-        // todo: make this NOT RELY ON PATCHES!
-        /*
-        switch (type)
-        {
-            case ChangeType.Weapon:
-                TextObjects[type].tmp.text = NameManager.GetWeaponName(WeaponPatches.Weapon);
-                break;
-            case ChangeType.Trait:
-                TextObjects[type].tmp.text = NameManager.GetTraitName(WeaponPatches.Trait);
-                break;
-            case ChangeType.Curse:
-                TextObjects[type].tmp.text = NameManager.GetCurseName(WeaponPatches.Curse);
-                break;
-        }
-        */
+        TextObjects[option].SetText(GetText(option));
     }
 
-    // Update() holds key presses and all that jazz. c:
     private void Update()
     {
         if (Input.GetKeyDown("j"))
