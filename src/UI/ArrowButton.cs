@@ -72,11 +72,13 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
         WeaponSelectionMenu.Instance?.UpdateText(option);
     }
 
-    private int ParseChoice(int index, int max)
+    private int EvaluateChoice(int index, int maximum)
     {
-        index = IsLeftArrow() ? index - 1 : index + 1;
-        if (index >= max) index = 0;
-        if (index < 0) index = max - 1; // Last item
+        int modifier = IsLeftArrow() ? -1 : 1;
+        index += modifier;
+
+        if (index >= maximum) { index = 0; }
+        if (index < 0) { index = maximum - 1; }
         return index;
     }
 
