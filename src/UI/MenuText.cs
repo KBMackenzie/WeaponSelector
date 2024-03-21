@@ -11,4 +11,10 @@ internal class MenuText : MonoBehaviour
     {
         this.textMesh = textMesh;
     }
+
+    public void SetText(string message)
+    {
+        if (textMesh == null) return;
+        textMesh.text = message;
+    }
 }
