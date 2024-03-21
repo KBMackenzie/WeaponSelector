@@ -34,7 +34,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
     }
 
     private readonly Dictionary<ChangeType, Arrows> ArrowButtons = new();
-    private readonly Dictionary<ChangeType, WeaponText> TextObjects = new();
+    private readonly Dictionary<ChangeType, MenuText> TextObjects = new();
 
     private void Start() // Initialize
     {
@@ -147,7 +147,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         textBox.transform.localPosition = new Vector3(0, y, 0);
         textMesh.alignment = TextAlignmentOptions.Center;
 
-        WeaponText textScript = textBox.AddComponent<WeaponText>();
+        MenuText textScript = textBox.AddComponent<MenuText>();
         textScript.MenuInstance = this;
         textScript.TextMesh = textMesh;
 
