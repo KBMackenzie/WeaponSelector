@@ -1,7 +1,5 @@
 ﻿using BepInEx;
 using System.Linq;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using WeaponSelector.Choices;
 using WeaponSelector.Utils;
@@ -10,92 +8,72 @@ namespace WeaponSelector.SaveData;
 
 internal static class SaveFile
 {
-    private static string? savePath = null;
-
-    public delegate void SaveEvent();
-    public static event SaveEvent? SaveActions;
-
-    public static string SavePath
+    private static ChoiceList? saveData;
+    public static ChoiceList SaveData
     {
-        get => savePath ?? FindSave();
+        get => saveData ?? LoadSave();
+        set => SaveToFile(value);
     }
 
-    public static (WeaponChoice, WeaponTrait, CurseChoice) SaveData
-    {
-        get { return LoadSave(); }
-        set { SaveToFile(value); }
-    }
+    private const string configFile = "WeaponSelector.txt";
+    private static string? savePath;
 
-    private static void SaveToFile ((WeaponChoice, WeaponTrait, CurseChoice) data)
+    private static void SaveToFile (ChoiceList choices)
     {
-        int[] index =
+        int[] values =
         {
-            (int)data.Item1,
-            (int)data.Item2,
-            (int)data.Item3
+            (int)choices.Weapon,
+            (int)choices.Trait,
+            (int)choices.Curse,
         };
 
-        List<string> indexes = index.Select(x => x.ToString()).ToList();
-
-        File.WriteAllText(SavePath, string.Empty);
-        File.AppendAllLines(SavePath, indexes);
-
-        SaveActions?.Invoke();
+        var lines = values.Select(x => x.ToString());
+        File.WriteAllText(GetSavePath(), string.Empty);
+        File.AppendAllLines(GetSavePath(), lines);
     }
 
-    private static (WeaponChoice, WeaponTrait, CurseChoice) LoadSave()
+    private static ChoiceList LoadSave()
     {
-        string[] data = File.ReadAllLines(SavePath);
-        int[] a =
-        {
-            ParseData(data.IndexIfItExists(0), ChangeType.Weapon, ChoiceManager.WeaponChoiceCount),
-            ParseData(data.IndexIfItExists(1), ChangeType.Trait,  ChoiceManager.TraitChoiceCount),
-            ParseData(data.IndexIfItExists(2), ChangeType.Curse,  ChoiceManager.CurseChoiceCount),
-        };
-
-        return ((WeaponChoice)a[0], (WeaponTrait)a[1], (CurseChoice)a[2]);
+        string[] data = File.ReadAllLines(GetSavePath());
+        ChoiceList choices = new ChoiceList(
+            Parser.FromNumber(data.IndexIfItExists(0), ChoiceManager.ToWeapon),
+            Parser.FromNumber(data.IndexIfItExists(0), ChoiceManager.ToTrait),
+            Parser.FromNumber(data.IndexIfItExists(0), ChoiceManager.ToCurse)
+        );
+        saveData = choices;
+        return choices;
     }
 
-    private static int ParseData(string a, ChangeType type, int max)
+    private static string GetSavePath()
     {
-        bool flag = Int32.TryParse(a, out int index);
+        if (savePath != null) return savePath;
 
-        if (!flag)
+        var files = Directory.GetFiles(
+            Paths.PluginPath,
+            configFile,
+            SearchOption.AllDirectories
+        );
+
+        if (files.Length == 0)
         {
-            Plugin.Instance?.LogWarning($"Couldn't read config data from {Path.GetFileName(SavePath)}. {type} settings now saved as default.");
-            return default;
-        }
-
-        if (index >= max)
-        {
-            Plugin.Instance?.LogWarning($"Tried to load index out of range. {type} settings now saved as default.");
-            return default;
-        }
-
-        return index;
-    }
-
-
-    private static string FindSave()
-    {
-        string configName = "WeaponChoice.txt";
-
-        string[] files = Directory.GetFiles(Paths.PluginPath, configName, SearchOption.AllDirectories);
-
-        if(files.Length == 0)
-        {
-            Plugin.Instance?.LogWarning($"Couldn't find file \"{configName}\". Creating that file instead.");
-            string path = Path.Combine(Paths.PluginPath, configName);
-            File.Create(path).Dispose();
-            savePath = path;
+            Plugin.Instance?.LogWarning($"Couldn't find a '{configFile}' file in the plugins folder! Creating a new one instead.");
+            savePath = CreateSaveFile();
             return savePath;
         }
-        else if (files.Length > 1)
+
+        if (files.Length >= 1)
         {
-            Plugin.Instance?.LogWarning($"Unexpected behavior: More than one file named \"{configName}\".");
+            Plugin.Instance?.LogWarning($"More than one '{configFile}' file found in the plugins folder. Unexpected behavior may occur!");
         }
 
         savePath = files[0];
         return savePath;
+    }
+
+    private static string CreateSaveFile()
+    {
+        string path = Path.Combine(Paths.PluginPath, configFile);
+        File.Create(path).Dispose();
+        return path;
     }
 }
