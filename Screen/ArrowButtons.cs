@@ -10,7 +10,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
     public Image img;
     public bool isLeft;
 
-    public Change type;
+    public ChangeType type;
 
     public Sprite Normal;
 
@@ -25,7 +25,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
 
         switch (type)
         {
-            case Change.Weapon:
+            case ChangeType.Weapon:
                 {
                     int cur = (int)WeaponPatches.Weapon;
                     int max = WeaponPatches.Weapon.EnumLength();
@@ -33,7 +33,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
                     data.Item1 = (WeaponChoice)choice;
                 }
                 break;
-            case Change.Trait:
+            case ChangeType.Trait:
                 {
                     int cur = (int)WeaponPatches.Trait;
                     int max = WeaponPatches.Trait.EnumLength();
@@ -41,7 +41,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
                     data.Item2 = (WeaponTrait)choice;
                 }
                 break;
-            case Change.Curse:
+            case ChangeType.Curse:
                 {
                     int cur = (int)WeaponPatches.Curse;
                     int max = WeaponPatches.Curse.EnumLength();

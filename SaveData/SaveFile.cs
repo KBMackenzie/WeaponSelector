@@ -52,9 +52,9 @@ internal static class SaveFile
 
         int[] a =
         {
-            ParseData(data.IndexIfItExists(0), Change.Weapon, choices.Item1.EnumLength()),
-            ParseData(data.IndexIfItExists(1), Change.Trait,  choices.Item2.EnumLength()),
-            ParseData(data.IndexIfItExists(2), Change.Curse,  choices.Item3.EnumLength()),
+            ParseData(data.IndexIfItExists(0), ChangeType.Weapon, choices.Item1.EnumLength()),
+            ParseData(data.IndexIfItExists(1), ChangeType.Trait,  choices.Item2.EnumLength()),
+            ParseData(data.IndexIfItExists(2), ChangeType.Curse,  choices.Item3.EnumLength()),
         };
 
         choices = ((WeaponChoice)a[0], (WeaponTrait)a[1], (CurseChoice)a[2]);
@@ -62,7 +62,7 @@ internal static class SaveFile
         return choices;
     }
 
-    private static int ParseData(string a, Change type, int max)
+    private static int ParseData(string a, ChangeType type, int max)
     {
         bool flag = Int32.TryParse(a, out int index);
 

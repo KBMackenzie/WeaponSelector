@@ -2,60 +2,6 @@
 
 namespace WeaponSelector;
 
-public enum WeaponChoice
-{
-    Sword,
-    Axe,
-    Hammer,
-    Dagger,
-    Gauntlet,
-    Random,     // Random is always last.
-}
-
-public enum WeaponTrait
-{
-    Normal,
-    Poison,
-    Critical,
-    Healing,
-    Fervour,
-    Godly,
-    Necromancy, // I refuse to spell it "Nercomancy" like the game does LOL
-    Random
-}
-
-public enum CurseChoice
-{
-    TouchofTurua,
-    Maelstrom,
-    TouchofIthaqua,
-    TouchoftheRevenant,
-    DivineBlast,
-    DivineGuardian,
-    DivineBlizzard,
-    DivineBlight,
-    IchorThrown,
-    PointofCorruption,
-    PathoftheRighteous,
-    CalloftheCrown,
-    FlamingShot,
-    HoundsofFate,
-    CleansingFire,
-    StrikeoftheCrown,
-    DeathsSweep,
-    DeathsAttendant,
-    DeathsSquall,
-    OathoftheCrown,
-    Random,
-}
-
-public enum Change
-{
-    Weapon,
-    Trait,
-    Curse,
-}
-
 public static class EnumHelpers
 {
     public static (WeaponChoice, WeaponTrait, CurseChoice) GetDefault()
@@ -63,17 +9,17 @@ public static class EnumHelpers
         return (WeaponChoice.Random, WeaponTrait.Random, CurseChoice.Random);
     }
 
-    public static int DefaultFromInt(Change type)
+    public static int DefaultFromInt(ChangeType type)
     {
         var data = GetDefault();
 
         switch (type)
         {
-            case Change.Weapon:
+            case ChangeType.Weapon:
                 return (int)data.Item1;
-            case Change.Trait:
+            case ChangeType.Trait:
                 return (int)data.Item2;
-            case Change.Curse:
+            case ChangeType.Curse:
                 return (int)data.Item3;
         }
 

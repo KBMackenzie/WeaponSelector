@@ -23,10 +23,10 @@ internal class WeaponMenu : MonoBehaviour
     public Canvas canvas;
 
     // Arrows
-    private Dictionary<Change, (ArrowButtons, ArrowButtons)> Arrows = new Dictionary<Change, (ArrowButtons, ArrowButtons)>();
+    private Dictionary<ChangeType, (ArrowButtons, ArrowButtons)> Arrows = new Dictionary<ChangeType, (ArrowButtons, ArrowButtons)>();
 
     // Text
-    private Dictionary<Change, WeaponText> TextObjects = new Dictionary<Change, WeaponText>();
+    private Dictionary<ChangeType, WeaponText> TextObjects = new Dictionary<ChangeType, WeaponText>();
 
     private void Start() // Initialize
     {
@@ -39,23 +39,23 @@ internal class WeaponMenu : MonoBehaviour
         Transform BoxParent = HeartBox.transform;
 
         // Header -- Weapons
-        CreateHeader(BoxParent, Change.Weapon);
+        CreateHeader(BoxParent, ChangeType.Weapon);
 
         // Weapons
-        CreateText(BoxParent, Change.Weapon);
-        CreateArrows(BoxParent, Change.Weapon);
+        CreateText(BoxParent, ChangeType.Weapon);
+        CreateArrows(BoxParent, ChangeType.Weapon);
 
         // Traits
-        CreateText(BoxParent, Change.Trait);
-        CreateArrows(BoxParent, Change.Trait);
+        CreateText(BoxParent, ChangeType.Trait);
+        CreateArrows(BoxParent, ChangeType.Trait);
 
 
         // Header -- Curses
-        CreateHeader(BoxParent, Change.Curse);
+        CreateHeader(BoxParent, ChangeType.Curse);
 
         // Curses
-        CreateText(BoxParent, Change.Curse);
-        CreateArrows(BoxParent, Change.Curse);
+        CreateText(BoxParent, ChangeType.Curse);
+        CreateArrows(BoxParent, ChangeType.Curse);
 
     }
 
@@ -90,12 +90,12 @@ internal class WeaponMenu : MonoBehaviour
         return new Vector3(w, h, 0);
     }
 
-    private void CreateHeader(Transform parent, Change type)
+    private void CreateHeader(Transform parent, ChangeType type)
     {
-        Dictionary<Change, float> GetY = new Dictionary<Change, float>()
+        Dictionary<ChangeType, float> GetY = new Dictionary<ChangeType, float>()
         {
-            { Change.Weapon, 343f },
-            { Change.Curse, -163f },
+            { ChangeType.Weapon, 343f },
+            { ChangeType.Curse, -163f },
         };
 
         float y = GetY[type];
@@ -114,14 +114,14 @@ internal class WeaponMenu : MonoBehaviour
         textMesh.alignment = TextAlignmentOptions.Center;
     }
 
-    private void CreateText(Transform parent, Change type)
+    private void CreateText(Transform parent, ChangeType type)
     {
         // DECIDE THINGS.
-        Dictionary<Change, float> GetY = new Dictionary<Change, float>()
+        Dictionary<ChangeType, float> GetY = new Dictionary<ChangeType, float>()
         {
-            { Change.Weapon,   189f },
-            { Change.Trait,    20f  },
-            { Change.Curse,   -314f }
+            { ChangeType.Weapon,   189f },
+            { ChangeType.Trait,    20f  },
+            { ChangeType.Curse,   -314f }
         };
 
         float y = GetY[type];
@@ -147,14 +147,14 @@ internal class WeaponMenu : MonoBehaviour
         TextObjects.Add(type, textScript);
     }
 
-    private void CreateArrows(Transform parent, Change type)
+    private void CreateArrows(Transform parent, ChangeType type)
     {
         // DECIDE THINGS.
-        Dictionary<Change, float> GetY = new Dictionary<Change, float>()
+        Dictionary<ChangeType, float> GetY = new Dictionary<ChangeType, float>()
         {
-            { Change.Weapon,  193f  },
-            { Change.Trait,   30f   },
-            { Change.Curse,  -304f  }
+            { ChangeType.Weapon,  193f  },
+            { ChangeType.Trait,   30f   },
+            { ChangeType.Curse,  -304f  }
         };
 
         float y = GetY[type];
@@ -201,32 +201,32 @@ internal class WeaponMenu : MonoBehaviour
         Arrows.Add(type, (arrL, arrR));
     }
 
-    private string GetText(Change type)
+    private string GetText(ChangeType type)
     {
         switch (type)
         {
-            case Change.Weapon:
+            case ChangeType.Weapon:
                 return NameManager.GetWeaponName(WeaponPatches.Weapon);
-            case Change.Trait:
+            case ChangeType.Trait:
                 return NameManager.GetTraitName(WeaponPatches.Trait);
-            case Change.Curse:
+            case ChangeType.Curse:
                 return NameManager.GetCurseName(WeaponPatches.Curse);
         }
         return "??";
     }
 
-    public void UpdateText(Change type)
+    public void UpdateText(ChangeType type)
     {
         // TODO: Make this dynamically display something else and not just weapon names
         switch (type)
         {
-            case Change.Weapon:
+            case ChangeType.Weapon:
                 TextObjects[type].tmp.text = NameManager.GetWeaponName(WeaponPatches.Weapon);
                 break;
-            case Change.Trait:
+            case ChangeType.Trait:
                 TextObjects[type].tmp.text = NameManager.GetTraitName(WeaponPatches.Trait);
                 break;
-            case Change.Curse:
+            case ChangeType.Curse:
                 TextObjects[type].tmp.text = NameManager.GetCurseName(WeaponPatches.Curse);
                 break;
         }
@@ -237,17 +237,17 @@ internal class WeaponMenu : MonoBehaviour
     {
         if (Input.GetKeyDown("j"))
         {
-            Arrows[Change.Weapon].Item2.ArrowClick();
+            Arrows[ChangeType.Weapon].Item2.ArrowClick();
         }
 
         if (Input.GetKeyDown("k"))
         {
-            Arrows[Change.Trait].Item2.ArrowClick();
+            Arrows[ChangeType.Trait].Item2.ArrowClick();
         }
 
         if (Input.GetKeyDown("l"))
         {
-            Arrows[Change.Curse].Item2.ArrowClick();
+            Arrows[ChangeType.Curse].Item2.ArrowClick();
         }
     }
 }
