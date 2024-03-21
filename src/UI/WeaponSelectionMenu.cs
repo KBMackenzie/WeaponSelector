@@ -148,8 +148,8 @@ internal class WeaponSelectionMenu : MonoBehaviour
         textMesh.alignment = TextAlignmentOptions.Center;
 
         WeaponText textScript = textBox.AddComponent<WeaponText>();
-        textScript.menuInstance = this;
-        textScript.tmp = textMesh;
+        textScript.MenuInstance = this;
+        textScript.TextMesh = textMesh;
 
         // Add with a reference to the Change
         TextObjects.Add(type, textScript);

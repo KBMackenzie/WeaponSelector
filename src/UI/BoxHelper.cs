@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -22,10 +21,4 @@ internal class BoxHelper : MonoBehaviour, IDragHandler
     {
         dragRectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
-}
-
-internal class WeaponText : MonoBehaviour
-{
-    public WeaponSelectionMenu menuInstance;
-    public TextMeshProUGUI tmp;
 }
