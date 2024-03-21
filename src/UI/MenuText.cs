@@ -5,10 +5,10 @@ namespace WeaponSelector.UI;
 
 internal class MenuText : MonoBehaviour
 {
-    public TextMeshProUGUI? TextMesh;
+    private TextMeshProUGUI? textMesh;
 
     public void Initialize(TextMeshProUGUI? textMesh)
     {
-        TextMesh = textMesh;
+        this.textMesh = textMesh;
     }
 }

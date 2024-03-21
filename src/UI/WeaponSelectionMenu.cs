@@ -159,7 +159,6 @@ internal class WeaponSelectionMenu : MonoBehaviour
 
     private void CreateArrows(Transform parent, MenuOption option)
     {
-        // DECIDE THINGS.
         Dictionary<MenuOption, float> GetY = new Dictionary<MenuOption, float>()
         {
             { MenuOption.Weapon,  193f  },
@@ -169,7 +168,6 @@ internal class WeaponSelectionMenu : MonoBehaviour
 
         float y = GetY[option];
 
-        // Left arrow
         GameObject leftArrow = new GameObject();
         leftArrow.name = $"LeftArrow_{option}";
         leftArrow.layer = Layer;
@@ -177,18 +175,18 @@ internal class WeaponSelectionMenu : MonoBehaviour
         leftArrow.transform.localPosition = new Vector3(-360f, y, 0);
         leftArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
-        Image img = leftArrow.AddComponent<Image>();
-        img.sprite = ArrowSprites[Direction.Left];
-        img.SetNativeSize();
+        Image leftArrowImage = leftArrow.AddComponent<Image>();
+        leftArrowImage.sprite = ArrowSprites[Direction.Left];
+        leftArrowImage.SetNativeSize();
 
-        ArrowButton arrL = leftArrow.AddComponent<ArrowButton>();
-        arrL.Portrait = img;
-        arrL.Direction = Direction.Left;
-        arrL.Change = option;
-        arrL.Normal = ArrowSprites[Direction.Left];
+        ArrowButton leftArrowButton = leftArrow.AddComponent<ArrowButton>();
+        leftArrowButton.Initialize( 
+            Direction.Left,
+            option,
+            leftArrowImage,
+            ArrowSprites[Direction.Left]
+        );
 
-
-        // Right arrow
         GameObject rightArrow = new GameObject();
         rightArrow.name = $"RightArrow_{option}";
         rightArrow.layer = Layer;
@@ -196,17 +194,19 @@ internal class WeaponSelectionMenu : MonoBehaviour
         rightArrow.transform.localPosition = new Vector3(360, y, 0);
         rightArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
-        Image img2 = rightArrow.AddComponent<Image>();
-        img2.sprite = ArrowSprites[Direction.Right];
-        img2.SetNativeSize();
+        Image rightArrowImage = rightArrow.AddComponent<Image>();
+        rightArrowImage.sprite = ArrowSprites[Direction.Right];
+        rightArrowImage.SetNativeSize();
 
-        ArrowButton arrR = rightArrow.AddComponent<ArrowButton>();
-        arrR.Portrait = img2;
-        arrL.Direction = Direction.Right;
-        arrR.Change = option;
-        arrR.Normal = ArrowSprites[Direction.Left];
+        ArrowButton rightArrowButton = rightArrow.AddComponent<ArrowButton>();
+        rightArrowButton.Initialize(
+            Direction.Right,
+            option,
+            rightArrowImage,
+            ArrowSprites[Direction.Left]
+        );
 
-        ArrowButtons.Add(option, new Arrows(arrL, arrR));
+        ArrowButtons.Add(option, new Arrows(leftArrowButton, rightArrowButton));
     }
 
     private string GetText(MenuOption option)

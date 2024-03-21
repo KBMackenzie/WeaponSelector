@@ -1,27 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace WeaponSelector.UI;
 
 internal class Draggable : MonoBehaviour, IDragHandler
 {
-    public Canvas? Canvas;
-    private RectTransform? DragRect;
+    private Canvas? canvas;
+    private RectTransform? dragRect;
 
     public void Initialize(Canvas? canvas)
     {
-        Canvas = canvas;
+        this.canvas = canvas;
     }
 
     private void Start()
     {
-        DragRect = GetComponent<RectTransform>();
+        dragRect = GetComponent<RectTransform>();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (DragRect == null || Canvas == null) return;
-        DragRect.anchoredPosition += eventData.delta / Canvas.scaleFactor;
+        if (dragRect == null || canvas == null) return;
+        dragRect.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 }

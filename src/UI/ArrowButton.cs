@@ -6,10 +6,18 @@ namespace WeaponSelector.UI;
 
 internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Direction Direction;
-    public MenuOption Change;
-    public Image Portrait;
-    public Sprite Normal;
+    private Direction direction;
+    private MenuOption option;
+    private Image? portrait;
+    private Sprite? normalSprite;
+
+    public void Initialize(Direction direction, MenuOption option, Image? portrait, Sprite? normalSprite)
+    {
+        this.direction = direction;
+        this.option = option;
+        this.portrait = portrait;
+        this.normalSprite = normalSprite;
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -17,10 +25,10 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     }
 
     public bool IsLeftArrow()
-        => Direction == Direction.Left;
+        => direction == Direction.Left;
 
     public bool IsRightArrow()
-        => Direction == Direction.Right;
+        => direction == Direction.Right;
 
     public void ArrowClick()
     {
@@ -61,7 +69,7 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
         // todo: redo all of this. instead of saving to file on every click,
         // please store data in memory and only save when user saves their game!
 
-        WeaponSelectionMenu.Instance?.UpdateText(Change);
+        WeaponSelectionMenu.Instance?.UpdateText(option);
     }
 
     private int ParseChoice(int index, int max)
@@ -74,17 +82,18 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ChangeColor(isRed: true);
+        ChangeColor(hovered: true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ChangeColor(isRed: false);
+        ChangeColor(hovered: false);
     }
 
-    void ChangeColor(bool isRed)
+    void ChangeColor(bool hovered)
     {
-        Color temp = isRed ? new Color(1f, 0, 0, 1f) : new Color(1f, 1f, 1f, 1f);
-        Portrait.color = temp;
+        if (portrait == null) return;
+        Color color = hovered ? new Color(1f, 0, 0, 1f) : new Color(1f, 1f, 1f, 1f);
+        portrait.color = color;
     }
 }
