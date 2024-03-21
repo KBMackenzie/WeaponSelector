@@ -15,10 +15,10 @@ internal class WeaponSelectionMenu : MonoBehaviour
 
     private readonly LayerMask Layer = LayerMask.NameToLayer("UI");
 
-    public readonly Dictionary<string, Sprite> ArrowSprites = new()
+    private readonly Dictionary<Direction, Sprite> ArrowSprites = new()
     {
-        { "Left",  TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
-        { "Right", TextureLoader.MakeSprite(Properties.Resources.ArrowR) }
+        { Direction.Left,  TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
+        { Direction.Right, TextureLoader.MakeSprite(Properties.Resources.ArrowR) }
     };
     private readonly Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox);
 
@@ -176,7 +176,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         leftArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
         Image img = leftArrow.AddComponent<Image>();
-        img.sprite = ArrowSprites["Left"];
+        img.sprite = ArrowSprites[Direction.Left];
         img.SetNativeSize();
 
         ArrowButton arrL = leftArrow.AddComponent<ArrowButton>();
@@ -184,7 +184,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         arrL.Portrait = img;
         arrL.IsLeft = true;
         arrL.Change = type;
-        arrL.Normal = ArrowSprites["Left"];
+        arrL.Normal = ArrowSprites[Direction.Left];
 
 
         // Right arrow
@@ -196,7 +196,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         rightArrow.transform.localScale = new Vector3(0.24f, 0.24f, 0);
 
         Image img2 = rightArrow.AddComponent<Image>();
-        img2.sprite = ArrowSprites["Right"];
+        img2.sprite = ArrowSprites[Direction.Right];
         img2.SetNativeSize();
 
         ArrowButton arrR = rightArrow.AddComponent<ArrowButton>();
@@ -204,7 +204,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         arrR.Portrait = img2;
         arrR.IsLeft = false;
         arrR.Change = type;
-        arrR.Normal = ArrowSprites["Right"];
+        arrR.Normal = ArrowSprites[Direction.Left];
 
         ArrowButtons.Add(type, new Arrows(arrL, arrR));
     }
