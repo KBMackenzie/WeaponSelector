@@ -44,6 +44,12 @@ internal static class SaveFile
         return choices;
     }
 
+    public static void Preload() {
+        if (savePath != null) return;
+        LoadSave();
+    }
+
+
     private static string GetSavePath()
     {
         if (savePath != null) return savePath;

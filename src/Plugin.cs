@@ -1,6 +1,5 @@
 using BepInEx;
 using HarmonyLib;
-using WeaponSelector.Patches;
 using WeaponSelector.SaveData;
 
 namespace WeaponSelector;
@@ -27,8 +26,7 @@ public class Plugin : BaseUnityPlugin
     {
         Instance = this;
         Logger.LogInfo($"Loaded {PluginName} successfully!");
-
-        Harmony harmony = new Harmony("kel.harmony.weaponselector");
-        harmony.PatchAll();
+        new Harmony("kel.harmony.weaponselector").PatchAll();
+        SaveFile.Preload();
     }
 }
