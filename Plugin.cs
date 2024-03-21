@@ -22,9 +22,9 @@ public class Plugin : BaseUnityPlugin
         Harmony harmony = new Harmony("kel.harmony.weaponselector");
         harmony.PatchAll();
 
-        SaveFile.SaveEvent Choice = () => WeaponPatches.Weapon = SaveFile.SaveData.Item1;
-        SaveFile.SaveEvent Trait = () => WeaponPatches.Trait = SaveFile.SaveData.Item2;
-        SaveFile.SaveEvent Curse = () => WeaponPatches.Curse = SaveFile.SaveData.Item3;
+        void Choice() => WeaponPatches.Weapon = SaveFile.SaveData.Item1;
+        void Trait()  => WeaponPatches.Trait = SaveFile.SaveData.Item2;
+        void Curse()  => WeaponPatches.Curse = SaveFile.SaveData.Item3;
 
         SaveFile.SaveActions += Choice;
         SaveFile.SaveActions += Trait;
