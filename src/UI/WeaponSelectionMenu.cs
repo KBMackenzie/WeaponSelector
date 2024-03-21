@@ -33,8 +33,8 @@ internal class WeaponSelectionMenu : MonoBehaviour
         }
     }
 
-    private readonly Dictionary<ChangeType, Arrows> ArrowButtons = new();
-    private readonly Dictionary<ChangeType, MenuText> TextObjects = new();
+    private readonly Dictionary<MenuOption, Arrows> ArrowButtons = new();
+    private readonly Dictionary<MenuOption, MenuText> TextObjects = new();
 
     private void Start() // Initialize
     {
@@ -47,23 +47,23 @@ internal class WeaponSelectionMenu : MonoBehaviour
         Transform BoxParent = HeartBox.transform;
 
         // Header -- Weapons
-        CreateHeader(BoxParent, ChangeType.Weapon);
+        CreateHeader(BoxParent, MenuOption.Weapon);
 
         // Weapons
-        CreateText(BoxParent, ChangeType.Weapon);
-        CreateArrows(BoxParent, ChangeType.Weapon);
+        CreateText(BoxParent, MenuOption.Weapon);
+        CreateArrows(BoxParent, MenuOption.Weapon);
 
         // Traits
-        CreateText(BoxParent, ChangeType.Trait);
-        CreateArrows(BoxParent, ChangeType.Trait);
+        CreateText(BoxParent, MenuOption.Trait);
+        CreateArrows(BoxParent, MenuOption.Trait);
 
 
         // Header -- Curses
-        CreateHeader(BoxParent, ChangeType.Curse);
+        CreateHeader(BoxParent, MenuOption.Curse);
 
         // Curses
-        CreateText(BoxParent, ChangeType.Curse);
-        CreateArrows(BoxParent, ChangeType.Curse);
+        CreateText(BoxParent, MenuOption.Curse);
+        CreateArrows(BoxParent, MenuOption.Curse);
 
     }
 
@@ -96,12 +96,12 @@ internal class WeaponSelectionMenu : MonoBehaviour
         return new Vector3(w, h, 0);
     }
 
-    private void CreateHeader(Transform parent, ChangeType type)
+    private void CreateHeader(Transform parent, MenuOption type)
     {
-        Dictionary<ChangeType, float> GetY = new Dictionary<ChangeType, float>()
+        Dictionary<MenuOption, float> GetY = new Dictionary<MenuOption, float>()
         {
-            { ChangeType.Weapon, 343f },
-            { ChangeType.Curse, -163f },
+            { MenuOption.Weapon, 343f },
+            { MenuOption.Curse, -163f },
         };
 
         float y = GetY[type];
@@ -120,14 +120,14 @@ internal class WeaponSelectionMenu : MonoBehaviour
         textMesh.alignment = TextAlignmentOptions.Center;
     }
 
-    private void CreateText(Transform parent, ChangeType type)
+    private void CreateText(Transform parent, MenuOption type)
     {
         // DECIDE THINGS.
-        Dictionary<ChangeType, float> GetY = new Dictionary<ChangeType, float>()
+        Dictionary<MenuOption, float> GetY = new Dictionary<MenuOption, float>()
         {
-            { ChangeType.Weapon,   189f },
-            { ChangeType.Trait,    20f  },
-            { ChangeType.Curse,   -314f }
+            { MenuOption.Weapon,   189f },
+            { MenuOption.Trait,    20f  },
+            { MenuOption.Curse,   -314f }
         };
 
         float y = GetY[type];
@@ -153,14 +153,14 @@ internal class WeaponSelectionMenu : MonoBehaviour
         TextObjects.Add(type, textScript);
     }
 
-    private void CreateArrows(Transform parent, ChangeType type)
+    private void CreateArrows(Transform parent, MenuOption type)
     {
         // DECIDE THINGS.
-        Dictionary<ChangeType, float> GetY = new Dictionary<ChangeType, float>()
+        Dictionary<MenuOption, float> GetY = new Dictionary<MenuOption, float>()
         {
-            { ChangeType.Weapon,  193f  },
-            { ChangeType.Trait,   30f   },
-            { ChangeType.Curse,  -304f  }
+            { MenuOption.Weapon,  193f  },
+            { MenuOption.Trait,   30f   },
+            { MenuOption.Curse,  -304f  }
         };
 
         float y = GetY[type];
@@ -207,7 +207,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         ArrowButtons.Add(type, new Arrows(arrL, arrR));
     }
 
-    private string GetText(ChangeType type)
+    private string GetText(MenuOption type)
     {
         // todo: MAKE THIS NOT RELY ON PATCHES
         /*
@@ -224,7 +224,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         return "??";
     }
 
-    public void UpdateText(ChangeType type)
+    public void UpdateText(MenuOption type)
     {
         // TODO: Make this dynamically display something else and not just weapon names
         // todo: make this NOT RELY ON PATCHES!
@@ -249,17 +249,17 @@ internal class WeaponSelectionMenu : MonoBehaviour
     {
         if (Input.GetKeyDown("j"))
         {
-            ArrowButtons[ChangeType.Weapon].Right.ArrowClick();
+            ArrowButtons[MenuOption.Weapon].Right.ArrowClick();
         }
 
         if (Input.GetKeyDown("k"))
         {
-            ArrowButtons[ChangeType.Trait].Right.ArrowClick();
+            ArrowButtons[MenuOption.Trait].Right.ArrowClick();
         }
 
         if (Input.GetKeyDown("l"))
         {
-            ArrowButtons[ChangeType.Curse].Right.ArrowClick();
+            ArrowButtons[MenuOption.Curse].Right.ArrowClick();
         }
     }
 }

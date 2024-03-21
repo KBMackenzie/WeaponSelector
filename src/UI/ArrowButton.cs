@@ -10,7 +10,7 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     public WeaponSelectionMenu MenuInstance;
     public Image Portrait;
     public Direction Direction;
-    public ChangeType Change;
+    public MenuOption Change;
     public Sprite Normal;
 
     public void OnPointerDown(PointerEventData eventData)
