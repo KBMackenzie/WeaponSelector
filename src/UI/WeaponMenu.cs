@@ -3,23 +3,22 @@ using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 using WeaponSelector.Choices;
-using WeaponSelector.Equipment;
+using WeaponSelector.Utils;
 
 namespace WeaponSelector.UI;
 
 internal class WeaponMenu : MonoBehaviour
 {
-    public GameObject Parent;
+    public GameObject? Parent;
     private LayerMask Layer = LayerMask.NameToLayer("UI");
-    private static LoadTexture TexLoader = new LoadTexture(FilterMode.Bilinear);
 
-    public readonly Dictionary<string, Sprite> ArrowSprites = new Dictionary<string, Sprite>()
+    public readonly Dictionary<string, Sprite> ArrowSprites = new()
     {
-        { "Left",     TexLoader.MakeSprite(Properties.Resources.ArrowL) },
-        { "Right",    TexLoader.MakeSprite(Properties.Resources.ArrowR) }
+        { "Left",     TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
+        { "Right",    TextureLoader.MakeSprite(Properties.Resources.ArrowR) }
     };
 
-    private Sprite BoxSprite = TexLoader.MakeSprite(Properties.Resources.MenuBox3);
+    private Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox3);
 
     public TextMeshProUGUI UIText;
     public Canvas canvas;
@@ -73,7 +72,7 @@ internal class WeaponMenu : MonoBehaviour
         img.sprite = BoxSprite;
         img.SetNativeSize();
         img.preserveAspect = true;
-        TexLoader.ChangeOpacity(ref img, 0.8f);
+        TextureLoader.ChangeOpacity(img, 0.8f);
 
         BoxHelper helper = box.AddComponent<BoxHelper>();
         helper.menuInstance = this;
