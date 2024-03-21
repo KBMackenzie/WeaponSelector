@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using Image = UnityEngine.UI.Image;
-using WeaponSelector.Choices;
 
 namespace WeaponSelector.UI;
 
 internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public WeaponSelectionMenu MenuInstance;
-    public Image Portrait;
     public Direction Direction;
     public MenuOption Change;
+    public Image Portrait;
     public Sprite Normal;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -63,7 +61,7 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
         // todo: redo all of this. instead of saving to file on every click,
         // please store data in memory and only save when user saves their game!
 
-        MenuInstance.UpdateText(Change);
+        WeaponSelectionMenu.Instance?.UpdateText(Change);
     }
 
     private int ParseChoice(int index, int max)
