@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <AssemblyName>WeaponSelector</AssemblyName>
 		<Description>Lets you select your starting weapon in dungeons in COTL.</Description>
