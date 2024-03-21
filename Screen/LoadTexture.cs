@@ -1,6 +1,4 @@
-﻿using BepInEx;
-using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
 namespace WeaponSelector;

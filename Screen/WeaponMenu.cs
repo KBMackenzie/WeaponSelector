@@ -1,5 +1,4 @@
-﻿using Lamb.UI.PauseMenu;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;

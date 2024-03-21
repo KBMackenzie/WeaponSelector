@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WeaponSelector;
+﻿namespace WeaponSelector;
 
 internal static class ArrayExtensions
 {

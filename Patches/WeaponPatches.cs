@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using HarmonyLib;
-using BepInEx;
-using Lamb;
-using System.Collections;
-using UnityEngine;
+﻿using HarmonyLib;
 
 namespace WeaponSelector;
 
