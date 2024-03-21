@@ -24,6 +24,7 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
 
     public void ArrowClick()
     {
+        /*
         var data = SaveFile.SaveData;
 
         switch (type)
@@ -55,6 +56,11 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
         }
 
         SaveFile.SaveData = data;
+        */
+
+        // todo: redo all of this. instead of saving to file on every click,
+        // please store data in memory and only save when user saves their game!
+
         menuInstance.UpdateText(type);
     }
 
