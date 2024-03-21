@@ -2,19 +2,15 @@
 using UnityEngine.EventSystems;
 using Image = UnityEngine.UI.Image;
 using WeaponSelector.Choices;
-using WeaponSelector.Patches;
-using WeaponSelector.SaveData;
 
 namespace WeaponSelector.UI;
 
-internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public WeaponMenu menuInstance;
-    public Image img;
-    public bool isLeft;
-
-    public ChangeType type;
-
+    public WeaponMenu MenuInstance;
+    public Image Portrait;
+    public bool IsLeft;
+    public ChangeType Change;
     public Sprite Normal;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -61,12 +57,12 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
         // todo: redo all of this. instead of saving to file on every click,
         // please store data in memory and only save when user saves their game!
 
-        menuInstance.UpdateText(type);
+        MenuInstance.UpdateText(Change);
     }
 
     private int ParseChoice(int index, int max)
     {
-        index = isLeft ? index -= 1 : index += 1;
+        index = IsLeft ? index -= 1 : index += 1;
         if (index >= max) index = 0;
         if (index < 0) index = max - 1; // Last item
         return index;
@@ -85,6 +81,6 @@ internal class ArrowButtons : MonoBehaviour, IPointerDownHandler, IPointerEnterH
     void ChangeColor(bool isRed)
     {
         Color temp = isRed ? new Color(1f, 0, 0, 1f) : new Color(1f, 1f, 1f, 1f);
-        img.color = temp;
+        Portrait.color = temp;
     }
 }

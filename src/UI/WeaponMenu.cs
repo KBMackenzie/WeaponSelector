@@ -10,24 +10,31 @@ namespace WeaponSelector.UI;
 internal class WeaponMenu : MonoBehaviour
 {
     public GameObject? Parent;
-    private LayerMask Layer = LayerMask.NameToLayer("UI");
+    public Canvas? Canvas;
+    public TextMeshProUGUI? TextMesh;
+
+    private readonly LayerMask Layer = LayerMask.NameToLayer("UI");
 
     public readonly Dictionary<string, Sprite> ArrowSprites = new()
     {
-        { "Left",     TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
-        { "Right",    TextureLoader.MakeSprite(Properties.Resources.ArrowR) }
+        { "Left",  TextureLoader.MakeSprite(Properties.Resources.ArrowL) },
+        { "Right", TextureLoader.MakeSprite(Properties.Resources.ArrowR) }
     };
+    private readonly Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox3);
 
-    private Sprite BoxSprite = TextureLoader.MakeSprite(Properties.Resources.MenuBox3);
+    private class Arrows
+    {
+        public ArrowButton Left { get; }
+        public ArrowButton Right { get; }
+        public Arrows(ArrowButton left, ArrowButton right)
+        {
+            Left  = left;
+            Right = right;
+        }
+    }
 
-    public TextMeshProUGUI UIText;
-    public Canvas canvas;
-
-    // Arrows
-    private Dictionary<ChangeType, (ArrowButtons, ArrowButtons)> Arrows = new Dictionary<ChangeType, (ArrowButtons, ArrowButtons)>();
-
-    // Text
-    private Dictionary<ChangeType, WeaponText> TextObjects = new Dictionary<ChangeType, WeaponText>();
+    private readonly Dictionary<ChangeType, Arrows> ArrowButtons = new();
+    private readonly Dictionary<ChangeType, WeaponText> TextObjects = new();
 
     private void Start() // Initialize
     {
@@ -65,7 +72,7 @@ internal class WeaponMenu : MonoBehaviour
         GameObject box = new GameObject();
         box.name = "MenuBox";
         box.layer = Layer;
-        box.transform.SetParent(Parent.transform);
+        box.transform.SetParent(Parent?.transform);
         box.transform.localPosition = new Vector3(0f, -100f, 0);
 
         Image img = box.AddComponent<Image>();
@@ -77,7 +84,7 @@ internal class WeaponMenu : MonoBehaviour
         BoxHelper helper = box.AddComponent<BoxHelper>();
         helper.menuInstance = this;
         helper.img = img;
-        helper.canvas = canvas;
+        helper.canvas = Canvas;
 
         box.transform.localScale = new Vector3(0.5f, 0.5f, 0);
 
@@ -107,8 +114,8 @@ internal class WeaponMenu : MonoBehaviour
         textBox.transform.SetParent(parent);
 
         TextMeshProUGUI textMesh = textBox.AddComponent<TextMeshProUGUI>();
-        textMesh.font = UIText.font;
-        textMesh.fontSize = UIText.fontSize * 0.7f;
+        textMesh.font = TextMesh?.font;
+        textMesh.fontSize = (TextMesh?.fontSize ?? 12) * 0.7f;
         textMesh.text = $"Choose a {type}:";
 
         textBox.transform.localPosition = new Vector3(0, y, 0);
@@ -133,8 +140,8 @@ internal class WeaponMenu : MonoBehaviour
         textBox.transform.SetParent(parent);
 
         TextMeshProUGUI textMesh = textBox.AddComponent<TextMeshProUGUI>();
-        textMesh.font = UIText.font;
-        textMesh.fontSize = UIText.fontSize;
+        textMesh.font = TextMesh?.font;
+        textMesh.fontSize = TextMesh?.fontSize ?? 12;
         textMesh.text = GetText(type);
 
         textBox.transform.localPosition = new Vector3(0, y, 0);
@@ -172,11 +179,11 @@ internal class WeaponMenu : MonoBehaviour
         img.sprite = ArrowSprites["Left"];
         img.SetNativeSize();
 
-        ArrowButtons arrL = leftArrow.AddComponent<ArrowButtons>();
-        arrL.menuInstance = this;
-        arrL.img = img;
-        arrL.isLeft = true;
-        arrL.type = type;
+        ArrowButton arrL = leftArrow.AddComponent<ArrowButton>();
+        arrL.MenuInstance = this;
+        arrL.Portrait = img;
+        arrL.IsLeft = true;
+        arrL.Change = type;
         arrL.Normal = ArrowSprites["Left"];
 
 
@@ -192,14 +199,14 @@ internal class WeaponMenu : MonoBehaviour
         img2.sprite = ArrowSprites["Right"];
         img2.SetNativeSize();
 
-        ArrowButtons arrR = rightArrow.AddComponent<ArrowButtons>();
-        arrR.menuInstance = this;
-        arrR.img = img2;
-        arrR.isLeft = false;
-        arrR.type = type;
+        ArrowButton arrR = rightArrow.AddComponent<ArrowButton>();
+        arrR.MenuInstance = this;
+        arrR.Portrait = img2;
+        arrR.IsLeft = false;
+        arrR.Change = type;
         arrR.Normal = ArrowSprites["Right"];
 
-        Arrows.Add(type, (arrL, arrR));
+        ArrowButtons.Add(type, new Arrows(arrL, arrR));
     }
 
     private string GetText(ChangeType type)
@@ -244,17 +251,17 @@ internal class WeaponMenu : MonoBehaviour
     {
         if (Input.GetKeyDown("j"))
         {
-            Arrows[ChangeType.Weapon].Item2.ArrowClick();
+            ArrowButtons[ChangeType.Weapon].Right.ArrowClick();
         }
 
         if (Input.GetKeyDown("k"))
         {
-            Arrows[ChangeType.Trait].Item2.ArrowClick();
+            ArrowButtons[ChangeType.Trait].Right.ArrowClick();
         }
 
         if (Input.GetKeyDown("l"))
         {
-            Arrows[ChangeType.Curse].Item2.ArrowClick();
+            ArrowButtons[ChangeType.Curse].Right.ArrowClick();
         }
     }
 }
