@@ -11,6 +11,13 @@ public class MenuState
     public WeaponTrait Trait   { get; private set; }
     public CurseChoice Curse   { get; private set; }
 
+    public MenuState()
+    {
+        Weapon = SaveFile.SaveData.Weapon;
+        Trait  = SaveFile.SaveData.Trait;
+        Curse  = SaveFile.SaveData.Curse;
+    }
+
     public ChoiceList GetState()
         => new ChoiceList(Weapon, Trait, Curse);
 
