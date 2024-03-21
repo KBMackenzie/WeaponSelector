@@ -182,7 +182,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         ArrowButton arrL = leftArrow.AddComponent<ArrowButton>();
         arrL.MenuInstance = this;
         arrL.Portrait = img;
-        arrL.IsLeft = true;
+        arrL.Direction = Direction.Left;
         arrL.Change = type;
         arrL.Normal = ArrowSprites[Direction.Left];
 
@@ -202,7 +202,7 @@ internal class WeaponSelectionMenu : MonoBehaviour
         ArrowButton arrR = rightArrow.AddComponent<ArrowButton>();
         arrR.MenuInstance = this;
         arrR.Portrait = img2;
-        arrR.IsLeft = false;
+        arrL.Direction = Direction.Right;
         arrR.Change = type;
         arrR.Normal = ArrowSprites[Direction.Left];
 

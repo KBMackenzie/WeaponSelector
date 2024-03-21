@@ -9,7 +9,7 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 {
     public WeaponSelectionMenu MenuInstance;
     public Image Portrait;
-    public bool IsLeft;
+    public Direction Direction;
     public ChangeType Change;
     public Sprite Normal;
 
@@ -17,6 +17,12 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     {
         ArrowClick();
     }
+
+    public bool IsLeftArrow()
+        => Direction == Direction.Left;
+
+    public bool IsRightArrow()
+        => Direction == Direction.Right;
 
     public void ArrowClick()
     {
@@ -62,7 +68,7 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     private int ParseChoice(int index, int max)
     {
-        index = IsLeft ? index -= 1 : index += 1;
+        index = IsLeftArrow() ? index - 1 : index + 1;
         if (index >= max) index = 0;
         if (index < 0) index = max - 1; // Last item
         return index;
