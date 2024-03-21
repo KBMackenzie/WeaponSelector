@@ -20,10 +20,7 @@ internal static class SaveFile
 
     public static string SavePath
     {
-        get
-        {
-            return savePath ?? FindSave();
-        }
+        get => savePath ?? FindSave();
     }
 
     public static (WeaponChoices, WeaponTraits, CurseChoices) SaveData
@@ -72,13 +69,13 @@ internal static class SaveFile
 
         if (!flag)
         {
-            Plugin.myLogger.LogWarning($"Couldn't read config data from {Path.GetFileName(SavePath)}. {type} settings now saved as default.");
+            Plugin.Instance?.LogWarning($"Couldn't read config data from {Path.GetFileName(SavePath)}. {type} settings now saved as default.");
             return EnumHelpers.DefaultFromInt(type);
         }
 
         if (index >= max)
         {
-            Plugin.myLogger.LogWarning($"Tried to load index out of range. {type} settings now saved as default.");
+            Plugin.Instance?.LogWarning($"Tried to load index out of range. {type} settings now saved as default.");
             return EnumHelpers.DefaultFromInt(type);
         }
 
@@ -94,7 +91,7 @@ internal static class SaveFile
 
         if(files.Length == 0)
         {
-            Plugin.myLogger.LogWarning($"Couldn't find file \"{configName}\". Creating that file instead.");
+            Plugin.Instance?.LogWarning($"Couldn't find file \"{configName}\". Creating that file instead.");
             string path = Path.Combine(Paths.PluginPath, configName);
             File.Create(path).Dispose();
             savePath = path;
@@ -102,7 +99,7 @@ internal static class SaveFile
         }
         else if (files.Length > 1)
         {
-            Plugin.myLogger.LogWarning($"Unexpected behavior: More than one file named \"{configName}\".");
+            Plugin.Instance?.LogWarning($"Unexpected behavior: More than one file named \"{configName}\".");
         }
 
         savePath = files[0];
