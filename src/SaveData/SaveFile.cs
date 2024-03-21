@@ -20,14 +20,14 @@ internal static class SaveFile
 
     private static void SaveToFile (ChoiceList choices)
     {
-        int[] values =
+        int[] number =
         {
             (int)choices.Weapon,
             (int)choices.Trait,
             (int)choices.Curse,
         };
 
-        var lines = values.Select(x => x.ToString());
+        var lines = number.Select(num => num.ToString());
         File.WriteAllText(GetSavePath(), string.Empty);
         File.AppendAllLines(GetSavePath(), lines);
     }
