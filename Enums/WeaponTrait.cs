@@ -2,6 +2,7 @@ namespace WeaponSelector;
 
 public enum WeaponTrait
 {
+    Random,
     Normal,
     Poison,
     Critical,
@@ -9,5 +10,4 @@ public enum WeaponTrait
     Fervour,
     Godly,
     Necromancy, // I refuse to spell it "Nercomancy" like the game does LOL
-    Random
 }

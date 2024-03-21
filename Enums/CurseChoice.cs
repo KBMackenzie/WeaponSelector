@@ -2,6 +2,7 @@ namespace WeaponSelector;
 
 public enum CurseChoice
 {
+    Random,
     TouchofTurua,
     Maelstrom,
     TouchofIthaqua,
@@ -22,5 +23,4 @@ public enum CurseChoice
     DeathsAttendant,
     DeathsSquall,
     OathoftheCrown,
-    Random,
 }
