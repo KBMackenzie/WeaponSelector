@@ -25,19 +25,18 @@ internal static class WeaponPatches
 
         if (Weapon != WeaponChoice.Random) // Chosen weapon, chosen trait.
         {
-            int trait = Trait != WeaponTrait.Random
-                ? (int)Trait
-                : UnityEngine.Random.Range(0, Trait.EnumLength() - 1);
+            WeaponTrait trait = Trait != WeaponTrait.Random
+                ? Trait
+                : ChoiceManager.GetRandomTrait();
 
-            __result = ToEquipment.FromWeapon(Weapon)[(int)Trait];
+            __result = ToEquipment.FromWeapon(Weapon)[(int)trait];
             return;
         }
 
         if (Trait != WeaponTrait.Random)  // Random weapon, chosen trait
         {
-            // The "-1" is so WeaponChoices.Random isn't rolled
-            int random = UnityEngine.Random.Range(0, Weapon.EnumLength() - 1);
-            __result = ToEquipment.FromWeapon((WeaponChoice)random)[(int)Trait];
+            WeaponChoice weapon = ChoiceManager.GetRandomWeapon();
+            __result = ToEquipment.FromWeapon(weapon)[(int)Trait];
         }
     }
 
