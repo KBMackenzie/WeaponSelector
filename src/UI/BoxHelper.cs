@@ -7,7 +7,7 @@ namespace WeaponSelector.UI;
 
 internal class BoxHelper : MonoBehaviour, IDragHandler
 {
-    public WeaponMenu menuInstance;
+    public WeaponSelectionMenu menuInstance;
     public Image img;
     public RectTransform dragRectTransform;
     public Canvas canvas;
@@ -26,6 +26,6 @@ internal class BoxHelper : MonoBehaviour, IDragHandler
 
 internal class WeaponText : MonoBehaviour
 {
-    public WeaponMenu menuInstance;
+    public WeaponSelectionMenu menuInstance;
     public TextMeshProUGUI tmp;
 }

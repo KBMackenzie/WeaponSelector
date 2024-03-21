@@ -7,7 +7,7 @@ using WeaponSelector.Utils;
 
 namespace WeaponSelector.UI;
 
-internal class WeaponMenu : MonoBehaviour
+internal class WeaponSelectionMenu : MonoBehaviour
 {
     public GameObject? Parent;
     public Canvas? Canvas;

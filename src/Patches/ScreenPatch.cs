@@ -33,7 +33,7 @@ internal class ScreenPatch
         // if this script is attached to Pause Menu(Clone)
         Canvas canvas = __instance.gameObject.GetComponent<Canvas>();
 
-        WeaponMenu menu = screen.AddComponent<WeaponMenu>();
+        WeaponSelectionMenu menu = screen.AddComponent<WeaponSelectionMenu>();
         menu.Parent = screen;
         menu.TextMesh   = textMesh;
         menu.Canvas = canvas;

@@ -7,7 +7,7 @@ namespace WeaponSelector.UI;
 
 internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public WeaponMenu MenuInstance;
+    public WeaponSelectionMenu MenuInstance;
     public Image Portrait;
     public bool IsLeft;
     public ChangeType Change;
