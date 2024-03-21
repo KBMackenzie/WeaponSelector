@@ -9,37 +9,33 @@ internal static class WeaponPatches
     public static WeaponTraits Trait;
     public static CurseChoices Curse;
 
-    static bool skipWeapon => Weapon == WeaponChoices.Random && Trait == WeaponTraits.Random;
-    static bool skipCurses => Curse == CurseChoices.Random;
+    private static bool ShouldSkipWeapon()
+        => Weapon == WeaponChoices.Random && Trait == WeaponTraits.Random;
 
+    private static bool ShouldSkipCurses()
+        => Curse == CurseChoices.Random;
 
     [HarmonyPatch(typeof(DataManager), nameof(DataManager.GetRandomWeaponInPool))]
     [HarmonyPostfix]
     private static void GetWeaponPostfix(DataManager __instance, ref EquipmentType __result)
     {
-        if (skipWeapon) return;
+        if (ShouldSkipWeapon()) return;
 
-        // Library!
-        Library library = new Library();
-
-        if (Weapon != WeaponChoices.Random) // Not random weapon
+        if (Weapon != WeaponChoices.Random) // Chosen weapon, chosen trait.
         {
-            if (Trait != WeaponTraits.Random) // Chosen trait
-            {
-                __result = library.Weapons[Weapon][(int)Trait];
-            }
-            else // Random trait
-            {
-                // The "-1" is so WeaponTraits.Random isn't rolled
-                int random = UnityEngine.Random.Range(0, Trait.EnumLength() - 1);
-                __result = library.Weapons[Weapon][random];
-            }
+            int trait = Trait != WeaponTraits.Random
+                ? (int)Trait
+                : UnityEngine.Random.Range(0, Trait.EnumLength() - 1);
+
+            __result = ToEquipment.FromWeapon(Weapon)[(int)Trait];
+            return;
         }
-        else if (Trait != WeaponTraits.Random) // Random weapon, chosen trait
+
+        if (Trait != WeaponTraits.Random)  // Random weapon, chosen trait
         {
             // The "-1" is so WeaponChoices.Random isn't rolled
             int random = UnityEngine.Random.Range(0, Weapon.EnumLength() - 1);
-            __result = library.Weapons[(WeaponChoices)random][(int)Trait];
+            __result = ToEquipment.FromWeapon((WeaponChoices)random)[(int)Trait];
         }
     }
 
@@ -47,11 +43,7 @@ internal static class WeaponPatches
     [HarmonyPostfix]
     private static void GetCursePostFix(DataManager __instance, ref EquipmentType __result)
     {
-        if (skipCurses) return;
-
-        // Library!
-        Library library = new Library();
-
-        __result = library.Curses[Curse];
+        if (ShouldSkipCurses()) return;
+        __result = ToEquipment.FromCurse(Curse);
     }
 }

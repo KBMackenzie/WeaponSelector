@@ -28,9 +28,6 @@ internal class WeaponMenu : MonoBehaviour
     // Text
     private Dictionary<Change, WeaponText> TextObjects = new Dictionary<Change, WeaponText>();
 
-    // Library!
-    private Library library = new Library();
-
     private void Start() // Initialize
     {
         CreateMenu();
@@ -209,11 +206,11 @@ internal class WeaponMenu : MonoBehaviour
         switch (type)
         {
             case Change.Weapon:
-                return library.WeaponNames[WeaponPatches.Weapon];
+                return NameManager.GetWeaponName(WeaponPatches.Weapon);
             case Change.Trait:
-                return library.TraitNames[WeaponPatches.Trait];
+                return NameManager.GetTraitName(WeaponPatches.Trait);
             case Change.Curse:
-                return library.CurseNames[WeaponPatches.Curse];
+                return NameManager.GetCurseName(WeaponPatches.Curse);
         }
         return "??";
     }
@@ -224,13 +221,13 @@ internal class WeaponMenu : MonoBehaviour
         switch (type)
         {
             case Change.Weapon:
-                TextObjects[type].tmp.text = library.WeaponNames[WeaponPatches.Weapon];
+                TextObjects[type].tmp.text = NameManager.GetWeaponName(WeaponPatches.Weapon);
                 break;
             case Change.Trait:
-                TextObjects[type].tmp.text = library.TraitNames[WeaponPatches.Trait];
+                TextObjects[type].tmp.text = NameManager.GetTraitName(WeaponPatches.Trait);
                 break;
             case Change.Curse:
-                TextObjects[type].tmp.text = library.CurseNames[WeaponPatches.Curse];
+                TextObjects[type].tmp.text = NameManager.GetCurseName(WeaponPatches.Curse);
                 break;
         }
     }

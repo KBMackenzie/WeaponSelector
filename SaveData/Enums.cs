@@ -2,7 +2,7 @@
 
 namespace WeaponSelector;
 
-internal enum WeaponChoices
+public enum WeaponChoices
 {
     Sword,
     Axe,
@@ -12,7 +12,7 @@ internal enum WeaponChoices
     Random,     // Random is always last.
 }
 
-internal enum WeaponTraits
+public enum WeaponTraits
 {
     Normal,
     Poison,
@@ -24,7 +24,7 @@ internal enum WeaponTraits
     Random
 }
 
-internal enum CurseChoices
+public enum CurseChoices
 {
     TouchofTurua,
     Maelstrom,
@@ -49,14 +49,14 @@ internal enum CurseChoices
     Random,
 }
 
-internal enum Change
+public enum Change
 {
     Weapon,
     Trait,
     Curse,
 }
 
-internal static class EnumHelpers
+public static class EnumHelpers
 {
     public static (WeaponChoices, WeaponTraits, CurseChoices) GetDefault()
     {
