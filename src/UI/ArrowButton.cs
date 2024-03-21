@@ -32,54 +32,14 @@ internal class ArrowButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     public void ArrowClick()
     {
-        /*
-        var data = SaveFile.SaveData;
-
-        switch (type)
-        {
-            case ChangeType.Weapon:
-                {
-                    int cur = (int)WeaponPatches.Weapon;
-                    int max = ChoiceManager.WeaponChoiceCount;
-                    int choice = ParseChoice(cur, max);
-                    data.Item1 = (WeaponChoice)choice;
-                }
-                break;
-            case ChangeType.Trait:
-                {
-                    int cur = (int)WeaponPatches.Trait;
-                    int max = ChoiceManager.TraitChoiceCount;
-                    int choice = ParseChoice(cur, max);
-                    data.Item2 = (WeaponTrait)choice;
-                }
-                break;
-            case ChangeType.Curse:
-                {
-                    int cur = (int)WeaponPatches.Curse;
-                    int max = ChoiceManager.CurseChoiceCount;
-                    int choice = ParseChoice(cur, max);
-                    data.Item3 = (CurseChoice)choice;
-                }
-                break;
-        }
-
-        SaveFile.SaveData = data;
-        */
-
-        // todo: redo all of this. instead of saving to file on every click,
-        // please store data in memory and only save when user saves their game!
-
+        SetOption();
         WeaponSelectionMenu.Instance?.UpdateText(option);
     }
 
-    private int EvaluateChoice(int index, int maximum)
+    private void SetOption()
     {
         int modifier = IsLeftArrow() ? -1 : 1;
-        index += modifier;
-
-        if (index >= maximum) { index = 0; }
-        if (index < 0) { index = maximum - 1; }
-        return index;
+        WeaponSelectionMenu.Instance?.State.SetOption(option, modifier);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
